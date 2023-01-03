@@ -1,4 +1,4 @@
-import { LoginForm } from './login-form.model';
+import { LoginForm } from './login-form.Model';
 
 describe('LoginForm', () => {
   it('should create an instance', () => {

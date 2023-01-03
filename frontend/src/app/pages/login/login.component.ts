@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginForm } from './login-form.model';
-import { LoginService } from './login.service';
+import { LoginForm } from '../../model/login-form.Model';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +8,17 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: LoginForm = new LoginForm();
 
-  constructor( private loginService: LoginService ) { }
+  loginForm!: LoginForm;
 
-  ngOnInit() {
-    // TODO document why this method 'ngOnInit' is empty
+  constructor(private authService: AuthService ) { }
 
+  ngOnInit(): void {
   }
 
   login() {
-    console.log(this.loginForm.username + " password : "  + this.loginForm.password);
-    this.loginService.authenticate(this.loginForm);
+    console.log("username: " + this.loginForm.username + " password: " + this.loginForm.password);
+    this.authService.login(this.loginForm).subscribe();
   }
+
 }
