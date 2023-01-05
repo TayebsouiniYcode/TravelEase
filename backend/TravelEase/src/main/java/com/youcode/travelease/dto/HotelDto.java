@@ -1,6 +1,5 @@
 package com.youcode.travelease.dto;
 
-import com.youcode.travelease.entity.Address;
 import com.youcode.travelease.entity.AddresseHotel;
 import com.youcode.travelease.util.ResponseMessage;
 import lombok.Data;

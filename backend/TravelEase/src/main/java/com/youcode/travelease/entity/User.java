@@ -1,12 +1,18 @@
 package com.youcode.travelease.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class User {
+
     @ManyToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE})
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

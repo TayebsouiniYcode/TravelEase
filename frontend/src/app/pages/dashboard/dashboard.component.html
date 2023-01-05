@@ -1,0 +1,85 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+     <h1>Dashboard</h1>
+     <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+           <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+     </nav>
+  </div>
+  <section class="section dashboard">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="row">
+              <div class="col-xxl-4 col-md-6">
+                 <div class="card info-card sales-card">
+                    <div class="card-body">
+                       <h5 class="card-title">Reservation <span>| Aujourd'hui</span></h5>
+                       <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-ticket-perforated"></i></div>
+                          <div class="ps-3">
+                             <h6>145</h6>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xxl-4 col-md-6">
+                 <div class="card info-card revenue-card" routerLink="/hotels">
+                    <div class="card-body">
+                       <h5 class="card-title">Hotels <span></span></h5>
+                       <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-house"></i>
+                          </div>
+                          <div class="ps-3">
+                             <h6>15</h6>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                 <div class="card info-card customers-card">
+                    <div class="card-body">
+                       <h5 class="card-title">Chambres <span></span></h5>
+                       <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-people"></i></div>
+                          <div class="ps-3">
+                             <h6>302</h6>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="col-12">
+                 <div class="card top-selling overflow-auto">
+                    <div class="card-body pb-0">
+                       <h5 class="card-title">Demande (Approve)</h5>
+                       <table class="table table-borderless">
+                          <thead>
+                             <tr>
+                                <th scope="col">Hotel</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Country</th>
+                                <th scope="col" class="text-center">Approve</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                             <tr>
+                                <td> Kenza </td>
+                                <td> Youssoufia </td>
+                                <td> Maroc </td>
+                                <td class="text-center h1"> <i class="bi bi-house-door-fill"></i></td>
+                             </tr>
+                          </tbody>
+                       </table>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+</main>

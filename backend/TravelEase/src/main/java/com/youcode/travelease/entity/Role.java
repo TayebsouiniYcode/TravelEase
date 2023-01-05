@@ -15,6 +15,15 @@ public class Role {
     @Column(name = "description", length = 200)
     private String description;
 
+    public Role ( Long id , String role_name ) {
+        this.id = id;
+        this.role_name = role_name;
+    }
+
+    public Role ( ) {
+
+    }
+
     public String getDescription ( ) {
         return description;
     }

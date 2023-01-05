@@ -3,11 +3,9 @@ package com.youcode.travelease.service.implementation;
 import com.youcode.travelease.entity.*;
 import com.youcode.travelease.repository.HotelRepository;
 import com.youcode.travelease.repository.ReservationRepository;
-import com.youcode.travelease.repository.RoomRepository;
 import com.youcode.travelease.repository.UserRepository;
 import com.youcode.travelease.service.HotelService;
 import com.youcode.travelease.service.RoomService;
-import com.youcode.travelease.service.UserService;
 import com.youcode.travelease.util.ReservationForm;
 import com.youcode.travelease.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +29,6 @@ public class HotelServiceImpl implements HotelService {
     private UserRepository userRepository;
     @Autowired
     private RoomService roomService;
-//    @Autowired
-//    private UserService userService;
 
     @Override
     public Hotel saveHotel ( Hotel hotel ) {

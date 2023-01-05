@@ -1,0 +1,39 @@
+<main id="main" class="main">
+  <div class="pagetitle d-flex justify-content-end">
+    <a href="#" routerLink="/addhotel" class="btn btn-primary">Ajouter Hotel</a>
+ </div>
+  <div class="col-12">
+    <div class="card top-selling overflow-auto">
+       <div class="card-body pb-0">
+          <h5 class="card-title">Hotels List</h5>
+          <div class="card mb-3" *ngFor="let hotel of hotels">
+            <div class="row g-0" routerLink="/detailshotel/{{hotel.id}}">
+              <div class="col-md-2">
+                <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ hotel.name }}
+                    <span class="badge bg-success text-white" *ngIf="hotel.approved == true">Approved</span>
+                    <span class="badge bg-warning text-dark" *ngIf="hotel.approved == false">Waiting for approve</span>
+                  </h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <small class="text-muted"> Adress :
+                      {{ hotel.addresseHotel.address}},
+                      {{ hotel.addresseHotel.city}},
+                      {{ hotel.addresseHotel.country}}
+                    </small>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-2 d-flex align-items-center">
+                <button type="button" class="btn btn-outline-secondary" routerLink="/detailshotel/{{hotel.id}}">Details</button>
+              </div>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</main>
