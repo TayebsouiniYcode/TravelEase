@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { HotelService } from 'src/app/service/hotel.service';
+import { Hotel } from 'src/app/model/hotel.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +10,11 @@ import { HotelService } from 'src/app/service/hotel.service';
 })
 export class DashboardComponent implements OnInit {
 
+  noApprovedHotels: Hotel[] = [];
 
-  constructor(private elementRef: ElementRef) {
+
+  constructor(private elementRef: ElementRef, private hotelService: HotelService, private router: Router) {
+    this.getNoApprovedHotel();
   }
 
   ngOnInit(): void {
@@ -19,6 +24,30 @@ export class DashboardComponent implements OnInit {
     this.elementRef.nativeElement.appendChild(s);
   }
 
+  getNoApprovedHotel(){
+    this.hotelService.getNoApprovedHotel().subscribe(
+      (hotelList) => {
+        this.noApprovedHotels = hotelList;
+        console.log(this.noApprovedHotels);
+      }
+    )
+  }
+
+  approveHotel(id: number) {
+    this.hotelService.approveHotelById(id).subscribe(
+      (hotelApproved) => {
+        console.log(hotelApproved);
+        if (hotelApproved.approved == true) {
+          this.noApprovedHotels.forEach(h => {
+            if (h.id == hotelApproved.id) {
+              let index = this.noApprovedHotels.indexOf (h);
+              this.noApprovedHotels.splice(index, 1);
+            }
+          });
+        }
+      }
+    )
+  }
 
 
 }

@@ -1,5 +1,6 @@
 package com.youcode.travelease.service.implementation;
 
+import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.repository.RoomRepository;
 import com.youcode.travelease.service.RoomService;
@@ -21,5 +22,10 @@ public class RoomServiceImpl implements RoomService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Room addRoom ( Room room) {
+        return roomRepository.save ( room );
     }
 }

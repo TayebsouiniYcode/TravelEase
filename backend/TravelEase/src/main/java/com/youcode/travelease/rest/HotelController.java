@@ -2,7 +2,9 @@ package com.youcode.travelease.rest;
 
 import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Reservation;
+import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.service.HotelService;
+import com.youcode.travelease.service.RoomService;
 import com.youcode.travelease.util.ReservationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class HotelController {
     @Autowired
     HotelService hotelService;
 
+    @Autowired
+    RoomService roomService;
+
     @PostMapping("/add")
     @ResponseBody
     public Hotel addHotel( @RequestBody Hotel hotel ) {
@@ -30,7 +35,8 @@ public class HotelController {
 
     @GetMapping("/{id}")
     public Hotel getHotelById(@PathVariable Long id){
-        return hotelService.selectHotelById ( id );
+        Hotel hotel =  hotelService.selectHotelById ( id );
+        return hotel;
     }
 
     @PutMapping("/update")
@@ -50,12 +56,33 @@ public class HotelController {
 
     @GetMapping("/approved")
     public List<Hotel> getApprovedHotels(){
-        return hotelService.getApprovedHotel();
+        return hotelService.getApprovedHotel(false);
     }
 
     @PostMapping("/reservation")
     @ResponseBody
     public Reservation sendReservation(@RequestBody ReservationForm reservationForm) {
         return hotelService.reservation(reservationForm);
+    }
+
+    @PostMapping("/addroom/{id}")
+    public Room addRoom( @RequestBody Room room, @PathVariable Long id ){
+        Hotel hotel = hotelService.selectHotelById ( id );
+
+        try {
+            if (hotel != null && !hotel.equals ( new Hotel () )) {
+                room.setHotel ( hotel );
+                return roomService.addRoom(room);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @GetMapping("/toapprove")
+    public List< Hotel > getHotelWithApprovedIsFalse(){
+        return hotelService.getApprovedHotel (false);
     }
 }

@@ -17,7 +17,7 @@ public interface HotelService {
 
     Hotel approve ( Long id );
 
-    List< Hotel> getApprovedHotel ( );
+    List< Hotel> getApprovedHotel ( Boolean isApproved);
 
     Reservation reservation ( ReservationForm reservationForm );
 }

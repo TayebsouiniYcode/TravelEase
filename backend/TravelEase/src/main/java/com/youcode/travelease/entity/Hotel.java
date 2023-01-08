@@ -3,7 +3,9 @@ package com.youcode.travelease.entity;
 import com.youcode.travelease.util.ResponseMessage;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,20 +21,12 @@ public class Hotel {
     @Column(name = "approved")
     private Boolean approved;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set < Room > rooms = new LinkedHashSet <> ( );
-
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "addresse_hotel_id")
     private AddresseHotel addresseHotel;
 
-    public Set < Room > getRooms ( ) {
-        return rooms;
-    }
-
-    public void setRooms ( Set < Room > rooms ) {
-        this.rooms = rooms;
-    }
+    @OneToMany(mappedBy = "hotel", orphanRemoval = true)
+    private List < Room > rooms = new ArrayList <> ( );
 
     public AddresseHotel getAddresseHotel ( ) {
         return addresseHotel;
@@ -60,6 +54,14 @@ public class Hotel {
 
     @Transient
     private ResponseMessage message;
+
+    public List < Room > getRooms ( ) {
+        return rooms;
+    }
+
+    public void setRooms ( List < Room > rooms ) {
+        this.rooms = rooms;
+    }
 
     public Boolean getApproved ( ) {
         return approved;

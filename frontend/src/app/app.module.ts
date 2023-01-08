@@ -14,18 +14,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CreateHotelComponent } from './pages/create-hotel/create-hotel.component';
 import { DetailsHotelComponent } from './pages/details-hotel/details-hotel.component';
+import { AddroomComponent } from './pages/addroom/addroom.component';
+import { DetailsRoomComponent } from './pages/details-room/details-room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
     SidebarComponent,
     FooterComponent,
     DashboardComponent,
     HotelsComponent,
     CreateHotelComponent,
     DetailsHotelComponent,
+    AddroomComponent,
+    DetailsRoomComponent,
   ],
   imports: [
     BrowserModule,

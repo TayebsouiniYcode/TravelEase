@@ -1,0 +1,75 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Form Elements</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="/hotels">Hotels</a></li>
+        <li class="breadcrumb-item active">Create hotel</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Hotel informations</h5>
+            <form name="addhotel" (submit)="createRoomByHotel()">
+
+              <div class="row mb-3">
+                <label for="number" class="col-sm-2 col-form-label">Numero de la chambre</label>
+                <div class="col-sm-10">
+                  <input id="number" type="number" class="form-control" name="number" value="0" [(ngModel)]="room.number">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="type" class="col-sm-2 col-form-label">Type</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="type" [(ngModel)]="room.type">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control" name="description" id="description" [(ngModel)]="room.description"></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="price" class="col-sm-2 col-form-label">Prix (par nuit)</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="price" [(ngModel)]="room.price">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="capacity" class="col-sm-2 col-form-label">Capacité</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" name="capacity" [(ngModel)]="room.capacity">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Submit Button</label>
+                <div class="col-sm-10"> <button type="submit" class="btn btn-primary">Create</button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h4>Conseil</h4>
+        <p>
+          This is simple :
+        </p>
+        <ul>
+          <li>Le nom de l'hotel est obligatoire</li>
+          <li>L'adresse contient l'adresse principale, la ville et le pays</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>

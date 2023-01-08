@@ -105,8 +105,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List < Hotel > getApprovedHotel ( ) {
-        return hotelRepository.findByApproved ( true );
+    public List < Hotel > getApprovedHotel ( Boolean isApproved ) {
+        return hotelRepository.findByApproved ( isApproved );
     }
 
     @Override

@@ -1,34 +1,56 @@
 package com.youcode.travelease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 public class Room {
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set < Reservation > reservations = new LinkedHashSet <> ( );
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "type", length = 50)
+    private String type;
+
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "number", length = 10)
     private String number;
-
-    @Column(name = "number_of_personne")
-    private Integer numberOfPersonne;
 
     @Column(name = "price")
     private Double price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
-
     @Column(name = "capacity")
     private Integer capacity;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hotel_id")
+    @JsonIgnore
+    private Hotel hotel;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set < Reservation > reservations = new LinkedHashSet <> ( );
+
+    public String getDescription ( ) {
+        return description;
+    }
+
+    public void setDescription ( String description ) {
+        this.description = description;
+    }
+
+    public String getType ( ) {
+        return type;
+    }
+
+    public void setType ( String type ) {
+        this.type = type;
+    }
 
     public Integer getCapacity ( ) {
         return capacity;
@@ -60,14 +82,6 @@ public class Room {
 
     public void setPrice ( Double price ) {
         this.price = price;
-    }
-
-    public Integer getNumberOfPersonne ( ) {
-        return numberOfPersonne;
-    }
-
-    public void setNumberOfPersonne ( Integer numberOfPersonne ) {
-        this.numberOfPersonne = numberOfPersonne;
     }
 
     public String getNumber ( ) {

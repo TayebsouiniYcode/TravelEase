@@ -12,17 +12,22 @@ export class DetailsHotelComponent implements OnInit {
 
   hotel!: Hotel;
   idHotel?: number;
+  numberOfRooms!: number;
 
 
   constructor(
     private activateRouter: ActivatedRoute,
     private hotelService: HotelService
   ) {
-    this.idHotel = activateRouter.snapshot.params["id"];
-    this.getHotelDetails(Number(this.idHotel));
+
+
+    //this.getHotelDetails(Number(this.idHotel));
+    //this.numberOfRooms = this.hotel.rooms.length;
    }
 
   ngOnInit(): void {
+    this.idHotel = this.activateRouter.snapshot.params["id"] ;
+    console.log(this.getHotelDetails(Number(this.idHotel)));
   }
 
   getHotelDetails(idHotel: number): any {
@@ -35,4 +40,5 @@ export class DetailsHotelComponent implements OnInit {
     });;
   }
 
+  vide(): void { }
 }
