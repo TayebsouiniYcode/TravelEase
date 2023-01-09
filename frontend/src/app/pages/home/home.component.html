@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TravelEase</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Chambres</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Hotels</a>
+        </li>
+      </ul>
+      <a class="btn btn-outline-secondary" href="/login">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="vh-100 mb-5">
+  <div class="h-100 text-white d-flex justify-content-center align-items-center" style="background-image: url(https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat; background-size: 100%; background-position: center;">
+    <div class="content text-center">
+      <h2 style="font-size: 5rem;">Welcome ! </h2>
+      <p style="font-size: 3rem;">
+        Quelle sera votre prochaine destination ?
+      </p>
+      <form (submit)="findRooms()" name="filter" class="text-start pb-3" style="background-color: rgba(51, 51, 51, 0.638);">
+        <div class="inputs d-md-flex gap-5">
+          <div class="form-group m-3">
+            <label for="city" class="form-label">City</label>
+            <select name="city" id="city" class="form-control" [(ngModel)]="findRoomForm.city">
+              <option value="marrakech">Marrakech</option>
+              <option value="agadir">Agadir</option>
+              <option value="Meknes">Meknes</option>
+            </select>
+          </div>
+          <div class="form-group m-3">
+            <label for="dateDebut" class="form-label">Du</label>
+            <input type="date" name="dateDebut" id="dateDebut" class="form-control" [(ngModel)]="findRoomForm.dateDebut">
+          </div>
+          <div class="form-group m-3">
+            <label for="dateFin" class="form-label">Au</label>
+            <input type="date" name="dateFin" id="dateFin" class="form-control" [(ngModel)]="findRoomForm.dateFin">
+          </div>
+          <div class="form-group m-3">
+            <label for="type" class="form-label">Type</label>
+            <select name="type" id="type" class="form-control" [(ngModel)]="findRoomForm.type">
+              <option value="standard">STANDARD ROOM</option>
+              <option value="family">FAMILY ROOM</option>
+              <option value="single">SINGLE ROOM</option>
+              <option value="deluxe">DELUXE ROOM</option>
+            </select>
+          </div>
+          <div class="form-group m-3">
+            <label for="capacity" class="form-label">capacity</label>
+            <input class="form-control" type="number" name="capacity" id="capacity" [(ngModel)]="findRoomForm.capacity">
+          </div>
+          <div class="form-group m-3">
+            <label for="" class="form-label">`</label>
+            <input type="submit" value="Find" class="form-control btn btn-light">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<hr class="m-5">
+<section class="room container">
+  <h2 class="text-center text-decoration-underline mb-5">Room</h2>
+  <div class="roomsList">
+
+    <div class="card-body pb-0" *ngFor="let room of roomList">
+      <div class="card mb-3" routerLink="/detailsroom/{{room.id}}">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img
+              src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ room.type }}
+              </h5>
+              <p class="card-text">
+                {{ room.description }}
+              </p>
+              <p class="card-text">
+                <small class="text-muted"> For {{ room.capacity }} Personnes </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

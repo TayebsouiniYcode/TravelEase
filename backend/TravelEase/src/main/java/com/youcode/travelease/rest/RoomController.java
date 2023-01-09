@@ -1,12 +1,29 @@
 package com.youcode.travelease.rest;
 
+import com.youcode.travelease.dto.FindRoomForm;
+import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/room")
+@CrossOrigin("http://localhost:4051")
 public class RoomController {
     @Autowired
     private RoomService roomService;
+
+    @GetMapping("/rooms")
+    public List<Room> getAllRooms() {
+        return this.roomService.getAllRooms();
+    }
+
+    @PostMapping("/disponible")
+    public List<Room> getDisponibleRooms(@RequestBody FindRoomForm findRoomForm) {
+        return roomService.getDisponibleRoom(findRoomForm);
+    }
+
 }

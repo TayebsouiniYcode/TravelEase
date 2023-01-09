@@ -3,7 +3,9 @@ package com.youcode.travelease.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,7 +36,7 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set < Reservation > reservations = new LinkedHashSet <> ( );
+    private List <Reservation> reservations = new ArrayList <> (  );
 
     public String getDescription ( ) {
         return description;
@@ -60,11 +62,11 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public Set < Reservation > getReservations ( ) {
+    public List < Reservation > getReservations ( ) {
         return reservations;
     }
 
-    public void setReservations ( Set < Reservation > reservations ) {
+    public void setReservations ( List < Reservation > reservations ) {
         this.reservations = reservations;
     }
 
