@@ -39,18 +39,26 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List < Room > getDisponibleRoom ( FindRoomForm findRoomForm ) {
-        //List<Room> roomList =  this.roomRepository.findAllByTypeAndCapacityGreaterThanEqual ( findRoomForm.getType (), findRoomForm.getCapacity () );
-        List<Room> allRooms = this.roomRepository.findAll ();
-        List<Room> roomList = new ArrayList <> (  );
 
-        allRooms.forEach ( room -> {
-            if (room.getHotel ().getAddresseHotel ().getCity ().equals ( findRoomForm.getCity () ) &&
-                    room.getCapacity () >= findRoomForm.getCapacity ( ) &&
-                    room.getType ().equals ( findRoomForm.getType () )) {
-                roomList.add ( room );
-            }
-        } );
+        List<Room> roomList = this.roomRepository.findAllByTypeAndHotel_AddresseHotel_CityAndCapacityIsGreaterThanEqual(findRoomForm.getType (),
+                findRoomForm.getCity (), findRoomForm.getCapacity ());
 
         return roomList;
+//        List<Room> allRooms = this.roomRepository.findAll ();
+//        List<Room> roomList = new ArrayList <> (  );
+//
+//        allRooms.forEach ( room -> {
+//            if (room != null && !room.equals ( new Room () )) {
+//                if (findRoomForm.getCity () != null
+//                        && !findRoomForm.getCity ().isEmpty ()
+//                        && room.getHotel ().getAddresseHotel ().getCity () != null
+//                        && !room.getHotel ().getAddresseHotel ().getCity ().isEmpty ()
+//                        && room.getHotel ().getAddresseHotel ().getCity ().equals ( findRoomForm.getCity () )) {
+//
+//                }
+//            }
+//        } );
+
+//        return allRooms;
     }
 }

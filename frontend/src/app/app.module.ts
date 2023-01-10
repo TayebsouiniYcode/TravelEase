@@ -18,6 +18,7 @@ import { AddroomComponent } from './pages/addroom/addroom.component';
 import { DetailsRoomComponent } from './pages/details-room/details-room.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RoomComponent } from './pages/room/room.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HomeComponent } from './pages/home/home.component';
     DetailsRoomComponent,
     RegisterComponent,
     HomeComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,

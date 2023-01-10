@@ -9,7 +9,9 @@ import { Room } from 'src/app/model/room.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   findRoomForm: FindRoomForm;
+
   roomList!: Room[];
 
   constructor(private roomService: RoomService) {
@@ -28,7 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   findRooms() {
-    console.log(this.findRoomForm);
     this.roomService.findDisponibleRooms(this.findRoomForm).subscribe(
       (foundedRoom) => {
         this.roomList = foundedRoom;

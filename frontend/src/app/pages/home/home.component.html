@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TravelEase</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -40,14 +40,6 @@
             </select>
           </div>
           <div class="form-group m-3">
-            <label for="dateDebut" class="form-label">Du</label>
-            <input type="date" name="dateDebut" id="dateDebut" class="form-control" [(ngModel)]="findRoomForm.dateDebut">
-          </div>
-          <div class="form-group m-3">
-            <label for="dateFin" class="form-label">Au</label>
-            <input type="date" name="dateFin" id="dateFin" class="form-control" [(ngModel)]="findRoomForm.dateFin">
-          </div>
-          <div class="form-group m-3">
             <label for="type" class="form-label">Type</label>
             <select name="type" id="type" class="form-control" [(ngModel)]="findRoomForm.type">
               <option value="standard">STANDARD ROOM</option>
@@ -72,11 +64,11 @@
 </div>
 <hr class="m-5">
 <section class="room container">
-  <h2 class="text-center text-decoration-underline mb-5">Room</h2>
+  <h2 class="text-center text-decoration-underline mb-5">Rooms</h2>
   <div class="roomsList">
 
     <div class="card-body pb-0" *ngFor="let room of roomList">
-      <div class="card mb-3" routerLink="/detailsroom/{{room.id}}">
+      <div class="card mb-3" routerLink="/room/{{room.id}}">
         <div class="row g-0">
           <div class="col-md-2">
             <img

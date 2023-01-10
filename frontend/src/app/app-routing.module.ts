@@ -12,6 +12,7 @@ import { DetailsRoomComponent } from './pages/details-room/details-room.componen
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RoomComponent } from './pages/room/room.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,9 +23,9 @@ const routes: Routes = [
   { path: "addhotel", component: CreateHotelComponent},
   { path: "detailshotel/:id", component: DetailsHotelComponent},
   { path: "addroom/:id", component: AddroomComponent},
+  { path: "room/:id", component: RoomComponent},
   { path: "hotels" , component: HotelsComponent},
   { path: "detailsroom/:id", component: DetailsRoomComponent},
-
 ];
 
 
