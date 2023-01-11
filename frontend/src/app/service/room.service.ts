@@ -22,4 +22,8 @@ export class RoomService {
   findDisponibleRooms(findRoomForm: FindRoomForm): Observable<any> {
     return this.http.post<any>("http://localhost:8080/api/room/disponible", findRoomForm);
   }
+
+  getRoomById(idRoom: number): Observable<Room> {
+    return this.http.get<Room>("http://localhost:8080/api/room/" + idRoom);
+  }
 }

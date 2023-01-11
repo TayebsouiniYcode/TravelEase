@@ -1,1 +1,135 @@
-<p>room works!</p>
+<header class="">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">TravelEase</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/hotels">Hotels</a>
+          </li>
+        </ul>
+        <div>
+          <a class="btn btn-outline-success" href="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="bg-dark-light p-5 w-100">
+    <h3 class="text-uppercase">{{ room.type }} Room</h3>
+  </div>
+</header>
+<main class="mt-5 container">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="row">
+        <div class="col-12">
+          <img class="w-100" src="assets/img/room.jpg" alt="">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <img class="w-100" src="assets/img/room.jpg" alt="">
+        </div>
+        <div class="col-md-4">
+          <img class="w-100" src="assets/img/room.jpg" alt="">
+        </div>
+        <div class="col-md-4">
+          <img class="w-100" src="assets/img/room.jpg" alt="">
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-3">
+          <div class="col-12">
+            <span class="fs-3">Room Details</span>
+          </div>
+          <hr class="col-12">
+          <div class="col-12">
+            <span class="fs-3">Location</span>
+          </div>
+          <hr class="col-12">
+          <div class="col-12">
+            <span class="fs-3">Reviews</span>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <div class="col-12">
+            <h3 class="text-uppercase mb-4">information</h3>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum cumque ut, hic corrupti porro laudantium doloremque numquam inventore autem soluta laborum quas id impedit sed doloribus dolore, quidem vero asperiores! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quis illo officia dolores? Repudiandae ea eligendi obcaecati magni. Libero ipsum voluptatibus vel placeat eos veritatis, commodi ipsa? Omnis, sit deleniti!
+            </p>
+          </div>
+          <hr class="col-12">
+          <div class="col-12">
+            <h3 class="text-uppercase mb-4">amenities</h3>
+            <ul class="text-muted">
+              <li class="py-2">Restaurant</li>
+              <li class="py-2">Elevator</li>
+              <li class="py-2">Garage Space</li>
+              <li class="py-2">Health Club</li>
+              <li class="py-2">Room Service</li>
+              <li class="py-2">Parking</li>
+              <li class="py-2">Pet Friendly</li>
+            </ul>
+
+          </div>
+          <hr class="col-12">
+          <div class="col-12">
+            <h3 class="text-uppercase mb-4">extra services</h3>
+            <ul class="text-muted list-unstyled">
+              <li class="d-flex justify-content-between py-2">
+                <span class="d-block">Air Conditioner </span>
+                <span class="d-block">+20$ to price per person </span>
+              </li>
+              <li class="d-flex justify-content-between py-2">
+                <span class="d-block">Free Internet </span>
+                <span class="d-block">+10$ to price per person </span>
+              </li>
+              <li class="d-flex justify-content-between py-2">
+                <span class="d-block">LCD Television </span>
+                <span class="d-block">+5$ to price per person </span>
+              </li>
+              <li class="d-flex justify-content-between py-2">
+                <span class="d-block">Microwave </span>
+                <span class="d-block">+5$ to price per person </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 reservation h-25 p-5" style="background-color: #333;">
+      <div class="col-12 mt-3">
+        <h4 class="text-uppercase text-center text-white">reservation</h4>
+      </div>
+      <hr class="col-12 text-white">
+      <form name="reservation">
+        <div class="form-group mb-5">
+          <label for="dateDebut" class="form-label text-white">Du</label>
+          <input type="date" name="dateDebut" id="dateDebut" class="bg-transparent text-white p-3 form-control">
+        </div>
+        <div class="form-group mb-5">
+          <label for="dateFin" class="form-label text-white">Au</label>
+          <input type="date" name="dateFin" id="dateFin" class="bg-transparent text-white p-3 form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label text-muted fs-3 mb-5">Price : {{room.price}} MAD / par nuit</label>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Je reserve" class="form-control text-uppercase p-3 fw-bold fs-4">
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+  </main>
