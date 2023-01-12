@@ -3,6 +3,7 @@ package com.youcode.travelease.service;
 import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.util.ReservationForm;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

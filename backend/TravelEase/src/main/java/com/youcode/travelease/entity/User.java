@@ -1,12 +1,18 @@
 package com.youcode.travelease.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @RequiredArgsConstructor

@@ -6,6 +6,7 @@ import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.service.HotelService;
 import com.youcode.travelease.service.RoomService;
 import com.youcode.travelease.util.ReservationForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +17,13 @@ import java.util.List;
 @CrossOrigin("http://localhost:4051")
 public class HotelController {
 
-    @Autowired
-    HotelService hotelService;
+    private  HotelService hotelService;
+    private  RoomService roomService;
 
-    @Autowired
-    RoomService roomService;
+    public HotelController ( HotelService hotelService , RoomService roomService ) {
+        this.hotelService = hotelService;
+        this.roomService = roomService;
+    }
 
     @PostMapping("/add")
     @ResponseBody

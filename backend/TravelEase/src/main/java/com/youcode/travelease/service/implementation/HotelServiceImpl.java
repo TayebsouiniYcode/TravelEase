@@ -30,6 +30,8 @@ public class HotelServiceImpl implements HotelService {
     @Autowired
     private RoomService roomService;
 
+
+
     @Override
     public Hotel saveHotel ( Hotel hotel ) {
         hotel.setApproved ( false );
@@ -112,8 +114,8 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public Reservation reservation ( ReservationForm reservationForm ) {
         /*
-        * TODO check user and room
-        * */
+         * TODO check user and room
+         * */
         Reservation reservation = new Reservation ();
         reservation.setDateDebut ( reservationForm.getDateDebut () );
         reservation.setDateFin ( reservationForm.getDateFin () );

@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 @CrossOrigin("http://localhost:4051")
 public class AuthController {
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
-    @PostMapping("/register")
-    public UserDto register(@RequestBody UserDto userDto) {
-        return this.userService.register(userDto);
-    }
-
-    @PostMapping("/login")
-    public String login( @RequestBody LoginForm loginForm ){
-        return this.userService.login(loginForm);
-    }
+//    @PostMapping("/register")
+//    public UserDto register(@RequestBody UserDto userDto) {
+//        return this.userService.register(userDto);
+//    }
+//
+//    @PostMapping("/login")
+//    public String login( @RequestBody LoginForm loginForm ){
+//        return this.userService.login(loginForm);
+//    }
 }
