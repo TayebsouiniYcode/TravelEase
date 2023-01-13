@@ -6,8 +6,10 @@ import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.repository.RoomRepository;
 import com.youcode.travelease.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.FilterChain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
