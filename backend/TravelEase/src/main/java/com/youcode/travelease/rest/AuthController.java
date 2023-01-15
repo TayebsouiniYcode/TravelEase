@@ -36,7 +36,12 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername ( loginForm.getUsername ( ) );
         if (userDetails != null ) {
             userLogedInDto.setUsername ( userDetails.getUsername () );
-            userLogedInDto.setRoles ( userDetails.getAuthorities () );
+            if (userDetails.getAuthorities () != null ) {
+                userDetails.getAuthorities ().forEach ( role -> {
+                    userLogedInDto.getRoles ().add ( role.getAuthority () );
+                } );
+            }
+
             userLogedInDto.setToken ( jwtUtils.generateToken ( userDetails ) );
             return userLogedInDto;
         }

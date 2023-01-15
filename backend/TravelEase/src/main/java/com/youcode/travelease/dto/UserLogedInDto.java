@@ -4,18 +4,20 @@ package com.youcode.travelease.dto;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class UserLogedInDto implements Serializable {
     private  String username;
     private  String email;
-    private Collection roles;
+    private List<String> roles = new ArrayList <> (  );
     private  String token;
 
     public UserLogedInDto ( ) {
     }
 
-    public UserLogedInDto ( String username , String email , Collection roles , String token ) {
+    public UserLogedInDto ( String username , String email , List<String> roles , String token ) {
         this.username = username;
         this.email = email;
         this.roles = roles;
@@ -38,11 +40,12 @@ public class UserLogedInDto implements Serializable {
         this.email = email;
     }
 
-    public Collection getRoles ( ) {
+    public List<String> getRoles ( ) {
         return roles;
     }
 
-    public void setRoles ( Collection roles ) {
+
+    public void setRoles ( List<String> roles ) {
         this.roles = roles;
     }
 

@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   noApprovedHotels: Hotel[] = [];
+  statistiquesList!: any;
 
   constructor(private elementRef: ElementRef, private hotelService: HotelService, private router: Router) {
+    this.getStatistiques();
     this.getNoApprovedHotel();
   }
 
@@ -50,5 +52,11 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-
+  getStatistiques() {
+    this.hotelService.getStatistiques().subscribe(
+      (statistiques) => {
+        this.statistiquesList = statistiques;
+      }
+    )
+  }
 }

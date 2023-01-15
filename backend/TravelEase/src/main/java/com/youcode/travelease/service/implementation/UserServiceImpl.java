@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -53,5 +54,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login ( LoginForm loginForm ) {
         return null;
+    }
+
+    @Override
+    public Optional < User > findByUsername ( String username ) {
+        return userRepository.findByUsername ( username );
     }
 }

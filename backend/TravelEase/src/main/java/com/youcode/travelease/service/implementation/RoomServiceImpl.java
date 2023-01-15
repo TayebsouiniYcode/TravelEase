@@ -30,6 +30,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public Optional < Room > findById ( Long id ) {
+        return roomRepository.findById ( id );
+    }
+
+    @Override
     public Room addRoom ( Room room) {
         return roomRepository.save ( room );
     }

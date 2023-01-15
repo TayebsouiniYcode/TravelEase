@@ -64,7 +64,6 @@ public class HotelController {
     }
 
     @PostMapping("/reservation")
-    @ResponseBody
     public Reservation sendReservation(@RequestBody ReservationForm reservationForm) {
         return hotelService.reservation(reservationForm);
     }

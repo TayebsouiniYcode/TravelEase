@@ -8,6 +8,7 @@ import com.youcode.travelease.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -15,4 +16,5 @@ public interface UserService {
     User register ( UserDto userDto );
     String login ( LoginForm loginForm );
 
+    Optional<User> findByUsername(String username);
 }

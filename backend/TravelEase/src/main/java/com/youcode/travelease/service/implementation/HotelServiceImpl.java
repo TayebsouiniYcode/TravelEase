@@ -7,6 +7,7 @@ import com.youcode.travelease.repository.ReservationRepository;
 import com.youcode.travelease.repository.UserRepository;
 import com.youcode.travelease.service.HotelService;
 import com.youcode.travelease.service.RoomService;
+import com.youcode.travelease.service.UserService;
 import com.youcode.travelease.util.ReservationForm;
 import com.youcode.travelease.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class HotelServiceImpl implements HotelService {
     private UserRepository userRepository; // TODO use service
     @Autowired
     private RoomService roomService; // TODO use service
+    @Autowired
+    private UserService userService;
 
 
 
@@ -168,8 +171,15 @@ public class HotelServiceImpl implements HotelService {
         reservation.setDateDebut ( reservationForm.getDateDebut () );
         reservation.setDateFin ( reservationForm.getDateFin () );
 
-        Room room = roomService.getRoomById ( reservationForm.getIdRoom ());
+        Optional<Room> optionalRoom = roomService.findById ( reservationForm.getIdRoom ());
+        Optional<User> optionalUser = userService.findByUsername( "tayebsouini" ); // TODO user by Token
 
+        if ( optionalRoom.isPresent () && optionalUser.isPresent ()) {
+            reservation.setRoom ( optionalRoom.get () );
+            reservation.setUser ( optionalUser.get () );
+        }
+
+        /**
         Optional<User> userOptional = userRepository.findById ( reservationForm.getIdUser () );
         User user = userOptional.get ();
 
@@ -177,9 +187,14 @@ public class HotelServiceImpl implements HotelService {
             reservation.setRoom ( room );
             reservation.setUser ( user );
         }
-
+         */
         reservationRepository.save ( reservation );
         return reservation;
+    }
+
+    @Override
+    public Integer getNumberOfHotels ( ) {
+        return Integer.parseInt ( String.valueOf ( hotelRepository.count ()));
     }
 
     @Override

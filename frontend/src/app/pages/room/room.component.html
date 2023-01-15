@@ -112,14 +112,14 @@
         <h4 class="text-uppercase text-center text-white">reservation</h4>
       </div>
       <hr class="col-12 text-white">
-      <form name="reservation">
+      <form name="reservation" (submit)="reserve()">
         <div class="form-group mb-5">
           <label for="dateDebut" class="form-label text-white">Du</label>
-          <input type="date" name="dateDebut" id="dateDebut" class="bg-transparent text-white p-3 form-control">
+          <input type="date" name="dateDebut" id="dateDebut" class="bg-transparent text-white p-3 form-control" [(ngModel)]="reservation.dateDebut">
         </div>
         <div class="form-group mb-5">
           <label for="dateFin" class="form-label text-white">Au</label>
-          <input type="date" name="dateFin" id="dateFin" class="bg-transparent text-white p-3 form-control">
+          <input type="date" name="dateFin" id="dateFin" class="bg-transparent text-white p-3 form-control" [(ngModel)]="reservation.dateFin">
         </div>
         <div class="form-group">
           <label class="form-label text-muted fs-3 mb-5">Price : {{room.price}} MAD / par nuit</label>

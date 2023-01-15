@@ -1,4 +1,6 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
+<div *ngIf="!(_router.url == '/login' || _router.url == '/register' || _router.url == '/' || _router.url == '/home')">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+</div>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

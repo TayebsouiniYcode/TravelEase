@@ -3,5 +3,4 @@ export class UserLogedInDto {
   public email!: string;
   public roles!: string[];
   public token!: string;
-
 }

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class ReservationForm {
     private Long idRoom;
-    private Long idUser;
     private LocalDate dateDebut;
     private LocalDate dateFin;
 
@@ -14,14 +13,6 @@ public class ReservationForm {
 
     public void setIdRoom ( Long idRoom ) {
         this.idRoom = idRoom;
-    }
-
-    public Long getIdUser ( ) {
-        return idUser;
-    }
-
-    public void setIdUser ( Long idUser ) {
-        this.idUser = idUser;
     }
 
     public LocalDate getDateDebut ( ) {
@@ -44,7 +35,6 @@ public class ReservationForm {
     public String toString ( ) {
         return "ReservationForm{" +
                 "idRoom=" + idRoom +
-                ", idUser=" + idUser +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 '}';

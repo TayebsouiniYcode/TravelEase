@@ -5,10 +5,12 @@ import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Room;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoomService {
     Room getRoomById(Long id);
 
+    Optional <Room> findById(Long id);
     Room addRoom( Room room );
 
     List< Room> getAllRooms ( );

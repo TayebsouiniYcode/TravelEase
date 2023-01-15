@@ -23,6 +23,6 @@ public interface HotelService {
 
     Reservation reservation ( ReservationForm reservationForm );
 
-
+    Integer getNumberOfHotels();
     HotelDto mapperDto(Hotel hotel);
 }

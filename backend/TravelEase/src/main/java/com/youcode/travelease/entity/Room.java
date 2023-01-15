@@ -36,6 +36,7 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List <Reservation> reservations = new ArrayList <> (  );
 
     public String getDescription ( ) {

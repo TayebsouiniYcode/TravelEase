@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
         localStorage.clear();
         localStorage.setItem("token", this.userLogedInDto.token);
         localStorage.setItem("username", this.userLogedInDto.username);
-        localStorage.setItem("roles", JSON.stringify(this.userLogedInDto.roles));
+        // localStorage.setItem("roles", JSON.stringify(this.userLogedInDto.roles));
+        localStorage.setItem("roles", this.userLogedInDto.roles.toString());
         this.router.navigate(["/dashboard"]);
       }
     );
