@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,22 @@ import { DOCUMENT } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  username: string | null;
 
-  ngOnInit(): void {
+  constructor(@Inject(DOCUMENT) private document: Document, private auth: AuthService) {
+    this.username = localStorage.getItem("username");
   }
+
+
+
+  ngOnInit(): void {  }
 
   sidebarToggle(){
     this.document.body.classList.toggle('toggle-sidebar');
+  }
+
+  lougout() {
+    this.auth.logout();
   }
 
 }

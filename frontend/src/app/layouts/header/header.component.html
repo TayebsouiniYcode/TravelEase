@@ -17,11 +17,12 @@
           </a>
         </li>
         <li class="nav-item dropdown pe-3">
-           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">Tayeb</span> </a>
+           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+             <span *ngIf="username != null" class="d-none d-md-block dropdown-toggle ps-2"> {{username}}</span>
+            </a>
            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                 <h6>Tayeb</h6>
-                 <span>Java Web developer</span>
+                 <h6>{{ username }}</h6>
               </li>
               <li>
                  <hr class="dropdown-divider">
@@ -30,15 +31,7 @@
               <li>
                  <hr class="dropdown-divider">
               </li>
-              <li> <a class="dropdown-item d-flex align-items-center" routerLink="/user-profile"> <i class="bi bi-gear"></i> <span>Account Settings</span> </a></li>
-              <li>
-                 <hr class="dropdown-divider">
-              </li>
-              <li> <a class="dropdown-item d-flex align-items-center" routerLink="/pages-faq"> <i class="bi bi-question-circle"></i> <span>Need Help?</span> </a></li>
-              <li>
-                 <hr class="dropdown-divider">
-              </li>
-              <li> <a class="dropdown-item d-flex align-items-center" routerLink="/"> <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span> </a></li>
+              <li> <a class="dropdown-item d-flex align-items-center" (click)="lougout()"> <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span> </a></li>
            </ul>
         </li>
      </ul>
