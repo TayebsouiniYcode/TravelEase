@@ -1,7 +1,9 @@
 package com.youcode.travelease.rest;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.youcode.travelease.dto.LoginForm;
 import com.youcode.travelease.dto.UserDto;
+import com.youcode.travelease.dto.UserLogedInDto;
 import com.youcode.travelease.entity.User;
 import com.youcode.travelease.security.JwtUtils;
 import com.youcode.travelease.service.UserService;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin("http://localhost:4051")
+@CrossOrigin()
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -26,15 +28,19 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> authenticate(@RequestBody LoginForm loginForm) {
+    public UserLogedInDto authenticate( @RequestBody LoginForm loginForm) {
+        UserLogedInDto userLogedInDto = new UserLogedInDto (  );
         authenticationManager.authenticate (
                 new UsernamePasswordAuthenticationToken ( loginForm.getUsername (), loginForm.getPassword () )
         );
         final UserDetails userDetails = userDetailsService.loadUserByUsername ( loginForm.getUsername ( ) );
         if (userDetails != null ) {
-            return ResponseEntity.ok ( jwtUtils.generateToken ( userDetails ));
+            userLogedInDto.setUsername ( userDetails.getUsername () );
+            userLogedInDto.setRoles ( userDetails.getAuthorities () );
+            userLogedInDto.setToken ( jwtUtils.generateToken ( userDetails ) );
+            return userLogedInDto;
         }
-        return ResponseEntity.status (400).body ("some error has accurent");
+        return userLogedInDto;
     }
 
     @PostMapping("/register")

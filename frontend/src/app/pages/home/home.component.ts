@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   roomList!: Room[];
 
   constructor(private roomService: RoomService) {
-    this.findRoomForm = new FindRoomForm();
     this.getAllRooms();
+    this.findRoomForm = new FindRoomForm();
    }
 
   ngOnInit(): void { }

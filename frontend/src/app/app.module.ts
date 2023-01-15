@@ -35,6 +35,7 @@ import { RoomComponent } from './pages/room/room.component';
     RegisterComponent,
     HomeComponent,
     RoomComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

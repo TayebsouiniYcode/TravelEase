@@ -12,12 +12,13 @@ export class DashboardComponent implements OnInit {
 
   noApprovedHotels: Hotel[] = [];
 
-
   constructor(private elementRef: ElementRef, private hotelService: HotelService, private router: Router) {
     this.getNoApprovedHotel();
   }
 
   ngOnInit(): void {
+    console.log("this is dashboard ts");
+    console.log(localStorage.getItem("token"));
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "../assets/js/main.js";

@@ -1,5 +1,6 @@
 package com.youcode.travelease.rest;
 
+import com.youcode.travelease.dto.HotelDto;
 import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/hotel")
-@CrossOrigin("http://localhost:4051")
+@CrossOrigin(origins = "http://localhost:4051")
 public class HotelController {
 
     private  HotelService hotelService;
@@ -27,7 +28,7 @@ public class HotelController {
 
     @PostMapping("/add")
     @ResponseBody
-    public Hotel addHotel( @RequestBody Hotel hotel ) {
+    public HotelDto addHotel( @RequestBody Hotel hotel ) {
         return hotelService.saveHotel ( hotel );
     }
 

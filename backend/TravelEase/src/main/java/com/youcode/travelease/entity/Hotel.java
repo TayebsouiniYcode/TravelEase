@@ -21,6 +21,10 @@ public class Hotel {
     @Column(name = "approved")
     private Boolean approved;
 
+    @ManyToOne
+    @JoinColumn(name = "proprietaire_id")
+    private User proprietaire;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "addresse_hotel_id")
     private AddresseHotel addresseHotel;
@@ -54,6 +58,14 @@ public class Hotel {
 
     @Transient
     private ResponseMessage message;
+
+    public User getProprietaire ( ) {
+        return proprietaire;
+    }
+
+    public void setProprietaire ( User proprietaire ) {
+        this.proprietaire = proprietaire;
+    }
 
     public List < Room > getRooms ( ) {
         return rooms;

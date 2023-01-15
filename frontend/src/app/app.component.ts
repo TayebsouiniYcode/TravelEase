@@ -9,7 +9,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'TravelEase';
 
-  constructor(public  _router: Router) {
+  logedIn!: boolean;
 
+  constructor(public  _router: Router) {
+    let username = localStorage.getItem("username");
+    if (username) {
+      this.logedIn = true;
+    } else {
+      this.logedIn = false;
+    }
   }
 }

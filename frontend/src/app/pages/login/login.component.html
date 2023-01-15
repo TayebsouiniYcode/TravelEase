@@ -10,28 +10,29 @@
                           <h5 class="card-title text-center pb-0 fs-4">Login</h5>
                           <p class="text-center small">Welcome back sur !</p>
                        </div>
-                       <form class="row g-3 needs-validation" (submit)="login()">
+                       <form class="row g-3" (submit)="login()">
 
                         <div class="col-12">
                              <label for="username" class="form-label">Username</label>
-                             <div class="input-group has-validation">
-                                <input type="text" name="username" class="form-control" id="username" required (ngModel)="loginForm.username">
+                             <div class="input-group">
+                                <input type="email" name="username" class="form-control" id="username" required [(ngModel)]="userLogin.username">
                              </div>
                         </div>
 
-
                         <div class="col-12">
                              <label for="password" class="form-label">Password</label>
-                             <input type="password" name="password" class="form-control" id="password" required (ngModel)="loginForm.password">
+                             <input type="password" name="password" class="form-control" id="password" required [(ngModel)]="userLogin.password">
                              <div class="invalid-feedback">Please enter your password !</div>
                         </div>
 
-
-                        <div class="col-12"> <button class="btn btn-primary w-100" type="submit">Login</button></div>
+                        <div class="col-12">
+                          <button class="btn btn-primary w-100" type="submit">Login</button>
+                        </div>
 
                         <div class="col-12">
                             <p class="small mb-0">Don't have account? <a href="/register">Create an account</a></p>
                         </div>
+
                        </form>
                     </div>
                  </div>

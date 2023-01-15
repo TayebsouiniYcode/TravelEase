@@ -1,5 +1,6 @@
 package com.youcode.travelease.service.implementation;
 
+import com.youcode.travelease.dto.HotelDto;
 import com.youcode.travelease.entity.*;
 import com.youcode.travelease.repository.HotelRepository;
 import com.youcode.travelease.repository.ReservationRepository;
@@ -16,27 +17,74 @@ import java.util.Optional;
 
 @Service
 public class HotelServiceImpl implements HotelService {
-    //
-    //    TODO
-    //    Optimisation du code
-    //    Appel des service au lieu des repository
 
     @Autowired
     private HotelRepository hotelRepository;
     @Autowired
-    private ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository; // TODO use service
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository userRepository; // TODO use service
     @Autowired
-    private RoomService roomService;
+    private RoomService roomService; // TODO use service
 
 
 
     @Override
-    public Hotel saveHotel ( Hotel hotel ) {
+    public HotelDto saveHotel ( Hotel hotel ) {
+        ResponseMessage message = new ResponseMessage ();
+        HotelDto hotelDto = new HotelDto ();
+        User proprietaire = userRepository.findByEmail ( "tayeb@gmail.com" ); // TODO use user from front end
+        hotel.setProprietaire ( proprietaire );
         hotel.setApproved ( false );
-        hotelRepository.save ( hotel );
-        return hotel;
+
+        try {
+            if (proprietaire != null && !proprietaire.equals ( new User (  ) )) {
+                if (hotel != null && !hotel.equals ( new Hotel () )) {
+                    if ( hotel.getName () != null && !hotel.getName ().isEmpty ()) {
+                        if (hotel.getAddresseHotel () != null && !hotel.getAddresseHotel ().equals (  new AddresseHotel () )) {
+                            message.setStatus ( 200 );
+                            message.setStatusName ( "Success");
+                            message.setMessage ( "Hotel has ben inserted in database" );
+                            hotelDto = mapperDto ( hotelRepository.save ( hotel ) );
+                            hotelDto.setMessage ( message );
+                        } else {
+                            message.setStatus ( 500 );
+                            message.setStatusName ( "Error");
+                            message.setMessage ( "Address is require" );
+                            hotelDto = mapperDto ( hotel );
+                            hotelDto.setMessage ( message );
+                        }
+                    } else {
+                        message.setStatus ( 500 );
+                        message.setStatusName ( "Error");
+                        message.setMessage ( "Hotel name is empty" );
+                        hotelDto = mapperDto ( hotel );
+                        hotelDto.setMessage ( message );
+                    }
+                } else {
+                    message.setStatus ( 500 );
+                    message.setStatusName ( "Error");
+                    message.setMessage ( "Hotel is empty or null" );
+                    hotelDto = mapperDto ( hotel );
+                    hotelDto.setMessage ( message );
+                }
+            } else {
+                message.setStatus ( 500 );
+                message.setStatusName ( "Error");
+                message.setMessage ( "User not found in database" );
+                hotelDto = mapperDto ( hotel );
+                hotelDto.setMessage ( message );
+            }
+        } catch (Exception e) {
+            message.setStatus ( 500 );
+            message.setStatusName ( "Exception");
+            message.setMessage ( e.getMessage () );
+            hotelDto = mapperDto ( hotel );
+            hotelDto.setMessage ( message );
+            return  hotelDto ;
+        }
+
+        return  hotelDto ;
     }
 
     @Override
@@ -133,4 +181,11 @@ public class HotelServiceImpl implements HotelService {
         reservationRepository.save ( reservation );
         return reservation;
     }
+
+    @Override
+    public HotelDto mapperDto ( Hotel hotel) {
+        return new HotelDto ( hotel.getName (), hotel.getAddresseHotel (), null);
+    }
+
+
 }

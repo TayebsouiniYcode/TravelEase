@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(loginForm: LoginForm): Observable<any> {
-    return this.http.post(this.baseUrl, loginForm);
+    return this.http.post(this.baseUrl, loginForm /*{ responseType: 'text' }*/);
   }
 
   register(userDto: UserDto): Observable<any>{
