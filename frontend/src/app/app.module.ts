@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +19,9 @@ import { DetailsRoomComponent } from './pages/details-room/details-room.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
+import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
+import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
+import { ProprietaireComponent } from './pages/proprietaire/proprietaire.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { RoomComponent } from './pages/room/room.component';
     HomeComponent,
     RoomComponent,
     LoginComponent,
+    UtilisateursComponent,
+    ProprietaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,13 @@ import { RoomComponent } from './pages/room/room.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

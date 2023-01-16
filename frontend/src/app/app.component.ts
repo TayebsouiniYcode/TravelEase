@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from './service/token.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,18 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'TravelEase';
-
   logedIn!: boolean;
 
+
   constructor(public  _router: Router) {
-    let username = localStorage.getItem("username");
-    if (username) {
-      this.logedIn = true;
-    } else {
-      this.logedIn = false;
-    }
+
+    // let username = localStorage.getItem("username");
+    // if (username) {
+    //   this.logedIn = true;
+    // } else {
+    //   this.logedIn = false;
+    // }
   }
+
+
 }

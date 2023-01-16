@@ -85,15 +85,15 @@ public class SecurityConfig {
             }
         };
     }
-//
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration (  );
-//        configuration.setAllowedOrigins ( Arrays.asList ( "http://localhost:4051" ) );
-//        configuration.setAllowedMethods ( Arrays.asList ( "GET", "POST", "DELETE", "PUT" ) );
-//        configuration.setAllowedHeaders ( List.of ("Authorization") );
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource (  );
-//        source.registerCorsConfiguration ( "/**", configuration );
-//        return source;
-//    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration (  );
+        configuration.setAllowedOrigins ( Arrays.asList ( "http://localhost:4051" ) );
+        configuration.setAllowedMethods ( Arrays.asList ( "GET", "POST", "DELETE", "PUT" ) );
+        configuration.setAllowedHeaders ( List.of ("Authorization") );
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource (  );
+        source.registerCorsConfiguration ( "/**", configuration );
+        return source;
+    }
 }

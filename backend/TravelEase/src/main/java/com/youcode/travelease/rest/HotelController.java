@@ -4,11 +4,15 @@ import com.youcode.travelease.dto.HotelDto;
 import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
+import com.youcode.travelease.entity.User;
 import com.youcode.travelease.service.HotelService;
 import com.youcode.travelease.service.RoomService;
 import com.youcode.travelease.util.ReservationForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +38,9 @@ public class HotelController {
 
     @GetMapping("/hotels")
     public List< Hotel> getAllHotels() {
+//        Authentication authentication = SecurityContextHolder.getContext ().getAuthentication ();
+//        String username = authentication.getPrincipal ().toString ();
+////        System.out.println ( username );
         return hotelService.selectAllHotel ();
     }
 

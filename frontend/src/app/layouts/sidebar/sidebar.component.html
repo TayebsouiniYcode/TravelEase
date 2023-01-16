@@ -6,30 +6,23 @@
         <span>Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="hasRole('ROLE_ADMIN') || hasRole('ROLE_PROPRIETAIRE')">
       <a class="nav-link " routerLink="/hotels">
         <i class="bi bi-grid"></i>
         <span>Hotels</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link " routerLink="/chambres">
-        <i class="bi bi-grid"></i>
-        <span>Chanbres</span>
-      </a>
-    </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="hasRole('ROLE_ADMIN')">
       <a class="nav-link " routerLink="/reservations">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="hasRole('ROLE_ADMIN')">
       <a class="nav-link " routerLink="/users">
         <i class="bi bi-grid"></i>
         <span>Utilisateurs</span>
       </a>
     </li>
-
   </ul>
 </aside>

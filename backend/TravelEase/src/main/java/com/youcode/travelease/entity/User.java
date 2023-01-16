@@ -19,7 +19,7 @@ import static javax.persistence.FetchType.EAGER;
 @AllArgsConstructor
 public class User {
 
-    @ManyToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE},fetch = EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))

@@ -14,18 +14,20 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 
+import { AuthGuard } from './guard/auth.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: "dashboard" , component: DashboardComponent},
-  { path: "addhotel", component: CreateHotelComponent},
-  { path: "detailshotel/:id", component: DetailsHotelComponent},
-  { path: "addroom/:id", component: AddroomComponent},
-  { path: "room/:id", component: RoomComponent},
-  { path: "hotels" , component: HotelsComponent},
-  { path: "detailsroom/:id", component: DetailsRoomComponent},
+  { path: "dashboard" , component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: "addhotel", component: CreateHotelComponent, canActivate: [AuthGuard]},
+  { path: "detailshotel/:id", component: DetailsHotelComponent, canActivate: [AuthGuard]},
+  { path: "addroom/:id", component: AddroomComponent, canActivate: [AuthGuard]},
+  { path: "room/:id", component: RoomComponent, canActivate: [AuthGuard]},
+  { path: "hotels" , component: HotelsComponent, canActivate: [AuthGuard]},
+  { path: "detailsroom/:id", component: DetailsRoomComponent, canActivate: [AuthGuard]},
 ];
 
 

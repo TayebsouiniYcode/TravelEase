@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:4051")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -28,24 +28,22 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("/login")
-    public UserLogedInDto authenticate( @RequestBody LoginForm loginForm) {
-        UserLogedInDto userLogedInDto = new UserLogedInDto (  );
+    public String authenticate( @RequestBody LoginForm loginForm) {
+//        UserLogedInDto userLogedInDto = new UserLogedInDto (  );
         authenticationManager.authenticate (
                 new UsernamePasswordAuthenticationToken ( loginForm.getUsername (), loginForm.getPassword () )
         );
         final UserDetails userDetails = userDetailsService.loadUserByUsername ( loginForm.getUsername ( ) );
-        if (userDetails != null ) {
-            userLogedInDto.setUsername ( userDetails.getUsername () );
-            if (userDetails.getAuthorities () != null ) {
-                userDetails.getAuthorities ().forEach ( role -> {
-                    userLogedInDto.getRoles ().add ( role.getAuthority () );
-                } );
-            }
-
-            userLogedInDto.setToken ( jwtUtils.generateToken ( userDetails ) );
-            return userLogedInDto;
-        }
-        return userLogedInDto;
+        return jwtUtils.generateToken ( userDetails );
+//        if (userDetails != null ) {
+//            userLogedInDto.setUsername ( userDetails.getUsername () );
+//            if (userDetails.getAuthorities () != null ) {
+//                userDetails.getAuthorities ().forEach ( role -> {
+//                    userLogedInDto.getRoles ().add ( role.getAuthority () );
+//                } );
+//            }
+//            return jwtUtils.generateToken ( userDetails );
+//        }
     }
 
     @PostMapping("/register")

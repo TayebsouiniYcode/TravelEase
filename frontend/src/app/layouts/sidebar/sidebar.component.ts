@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TokenService } from 'src/app/service/token.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -8,8 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
 
-  constructor() {}
+  constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {}
-  //ROLE_USER
+
+  hasRole(roleName: string) : boolean | any{
+    let roles = this.tokenService.getRoles();
+
+    for (const authority in roles) {
+      if (roles[authority].authority == roleName) {
+        return true;
+      }
+      // if (tempData.hasOwnProperty(key)) {
+      //   // your logic here
+      // }
+  }
+    // roles.array.forEach( (role:  { authority: string; }) => {
+    //   if (role.authority == roleName) {
+    //     return true;
+    //   }
+    // });
+  }
 }

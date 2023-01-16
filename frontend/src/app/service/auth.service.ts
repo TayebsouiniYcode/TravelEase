@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(loginForm: LoginForm): Observable<any> {
-    return this.http.post(this.baseUrl, loginForm /*{ responseType: 'text' }*/);
+    return this.http.post(this.baseUrl, loginForm, { responseType: 'text' });
   }
 
   register(userDto: UserDto): Observable<any>{
@@ -23,5 +23,15 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  isAuthenticate(): boolean {
+    let token = localStorage.getItem("token");
+
+    if (token) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
