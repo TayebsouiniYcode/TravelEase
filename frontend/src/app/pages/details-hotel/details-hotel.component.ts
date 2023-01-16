@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hotel } from 'src/app/model/hotel.model';
 import { HotelService } from 'src/app/service/hotel.service';
 
@@ -17,28 +17,32 @@ export class DetailsHotelComponent implements OnInit {
 
   constructor(
     private activateRouter: ActivatedRoute,
-    private hotelService: HotelService
+    private hotelService: HotelService,
+    private router: Router
   ) {
-
-
-    //this.getHotelDetails(Number(this.idHotel));
-    //this.numberOfRooms = this.hotel.rooms.length;
+    this.idHotel = this.activateRouter.snapshot.params["id"] ;
+    this.getHotelDetails(Number(this.idHotel));
    }
 
   ngOnInit(): void {
-    this.idHotel = this.activateRouter.snapshot.params["id"] ;
-    console.log(this.getHotelDetails(Number(this.idHotel)));
+
   }
 
   getHotelDetails(idHotel: number): any {
     return this.hotelService.getHotelDetails(idHotel).subscribe({
       next: (result) => {
-        console.log(result);
         this.hotel = result;
       },
       error: (e) => console.error(e)
     });;
   }
 
-  vide(): void { }
+  deleteHotel(): void {
+    this.hotelService.deleteHotel(Number(this.idHotel)).subscribe(
+      (data) => {
+        console.log(data);
+        this.router.navigate(['/dashboard']);
+      }
+    )
+  }
 }

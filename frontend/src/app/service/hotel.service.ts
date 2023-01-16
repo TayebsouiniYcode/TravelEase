@@ -43,4 +43,8 @@ export class HotelService {
   getStatistiques(): Observable<any> {
     return this.http.get("http://localhost:8080/api/admin/statistique");
   }
+
+  deleteHotel(idHotel: number): Observable<any> {
+    return this.http.delete("http://localhost:8080/api/hotel/delete/" + idHotel);
+  }
 }

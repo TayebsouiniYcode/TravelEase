@@ -27,7 +27,13 @@
               <div class="row mb-3">
                 <label for="type" class="col-sm-2 col-form-label">Type</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="type" [(ngModel)]="room.type">
+                  <select name="type" id="" class="form-control" [(ngModel)]="room.type">
+                    <option value="single" class="text-uppercase"> single room </option>
+                    <option value="studio" class="text-uppercase"> studio room </option>
+                    <option value="deluxe" class="text-uppercase"> Deluxe room </option>
+                    <option value="suites" class="text-uppercase"> suites </option>
+                    <option value="presidentiel" class="text-uppercase"> presidential room </option>
+                  </select>
                 </div>
               </div>
 

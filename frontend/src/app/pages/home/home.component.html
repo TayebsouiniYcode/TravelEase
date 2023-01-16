@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">TravelEase</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -17,7 +17,8 @@
           <a class="nav-link" href="#">Hotels</a>
         </li>
       </ul>
-      <a class="btn btn-outline-secondary" href="/login">Login</a>
+        <a *ngIf="isAuthenticate == false" class="btn btn-outline-secondary" href="/login">Login</a>
+        <a *ngIf="isAuthenticate == true" class="btn btn-outline-secondary" (click)="logout()">logout</a>
     </div>
   </div>
 </nav>
@@ -36,16 +37,19 @@
             <select name="city" id="city" class="form-control" [(ngModel)]="findRoomForm.city">
               <option value="marrakech">Marrakech</option>
               <option value="agadir">Agadir</option>
-              <option value="Meknes">Meknes</option>
+              <option value="meknes">Meknes</option>
+              <option value="safi">Safi</option>
+              <option value="ysoussoufia">Youssoufia</option>
             </select>
           </div>
           <div class="form-group m-3">
             <label for="type" class="form-label">Type</label>
             <select name="type" id="type" class="form-control" [(ngModel)]="findRoomForm.type">
-              <option value="standard">STANDARD ROOM</option>
-              <option value="family">FAMILY ROOM</option>
-              <option value="single">SINGLE ROOM</option>
-              <option value="deluxe">DELUXE ROOM</option>
+                <option value="single" class="text-uppercase"> single room </option>
+                <option value="studio" class="text-uppercase"> studio room </option>
+                <option value="deluxe" class="text-uppercase"> Deluxe room </option>
+                <option value="suites" class="text-uppercase"> suites </option>
+                <option value="presidentiel" class="text-uppercase"> presidential room </option>
             </select>
           </div>
           <div class="form-group m-3">

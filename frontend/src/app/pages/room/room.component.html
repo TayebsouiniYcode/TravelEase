@@ -15,7 +15,8 @@
           </li>
         </ul>
         <div>
-          <a class="btn btn-outline-success" href="/login">Login</a>
+          <a *ngIf="isAuthenticate == false" class="btn btn-outline-secondary" href="/login">Login</a>
+          <a *ngIf="isAuthenticate == true" class="btn btn-outline-secondary" (click)="logout()">logout</a>
         </div>
       </div>
     </div>

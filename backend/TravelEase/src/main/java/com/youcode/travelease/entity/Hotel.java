@@ -1,5 +1,6 @@
 package com.youcode.travelease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.youcode.travelease.util.ResponseMessage;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Hotel {
 
     @ManyToOne
     @JoinColumn(name = "proprietaire_id")
+    @JsonIgnore
     private User proprietaire;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

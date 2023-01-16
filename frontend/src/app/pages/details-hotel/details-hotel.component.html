@@ -7,7 +7,12 @@
     </div>
     <div class="col-md-6 d-flex flex-column justify-content-between">
       <div>
-        <h3>{{ hotel.name }}</h3>
+        <div class="d-flex justify-content-between mt-4">
+          <h3>{{ hotel.name }}</h3>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+          </button>
+        </div>
         <hr>
         <p class="mt-5">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum iure accusantium illo quibusdam est ducimus
@@ -98,4 +103,26 @@
       </div>
    </div>
   </div>
+
 </main>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier l'hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Delete sure for delete Hotel: {{ hotel.name }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="deleteHotel()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
