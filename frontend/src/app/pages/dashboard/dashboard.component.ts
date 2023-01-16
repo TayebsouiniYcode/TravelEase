@@ -56,6 +56,8 @@ export class DashboardComponent implements OnInit {
     this.hotelService.getStatistiques().subscribe(
       (statistiques) => {
         this.statistiquesList = statistiques;
+        this.statistiquesList.numberOfReservation = 0;
+        this.statistiquesList.numberOfRooms = 0;
       }
     )
   }

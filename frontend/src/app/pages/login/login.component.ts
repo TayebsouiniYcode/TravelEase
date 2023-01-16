@@ -29,12 +29,14 @@ export class LoginComponent implements OnInit {
   login() {
     console.log("this is login component");
     this.authService.login(this.userLogin).subscribe(
-      (token) => {
-        if (token) {
-          console.log(token);
-          localStorage.setItem("token", token);
-
-          let roles = this.tokenService.getRoles();
+      (token_) => {
+        if (token_) {
+          localStorage.clear();
+          console.log(token_);
+          localStorage.setItem("token", token_);
+          this.router.navigate(['/dashboard']);
+        } else {
+          console.log("token is null");
         }
   });
 }

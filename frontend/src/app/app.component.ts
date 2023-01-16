@@ -9,11 +9,10 @@ import { TokenService } from './service/token.service';
 })
 export class AppComponent {
   title = 'TravelEase';
-  logedIn!: boolean;
+  // logedIn!: boolean;
 
 
   constructor(public  _router: Router) {
-
     // let username = localStorage.getItem("username");
     // if (username) {
     //   this.logedIn = true;
