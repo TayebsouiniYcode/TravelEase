@@ -43,7 +43,9 @@ export class RoomComponent implements OnInit {
     this.reservation.idRoom = this.idRoom;
     this.reservationService.reserve(this.reservation).subscribe(
       (reservation_) => {
-        console.log(reservation_)
+        if (reservation_) {
+          this.router.navigate(['/myreservations']);
+        }
       }
     )
   }

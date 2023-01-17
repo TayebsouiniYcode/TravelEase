@@ -6,11 +6,15 @@ import com.youcode.travelease.repository.HotelRepository;
 import com.youcode.travelease.repository.ReservationRepository;
 import com.youcode.travelease.repository.UserRepository;
 import com.youcode.travelease.service.HotelService;
+import com.youcode.travelease.service.ReservationService;
 import com.youcode.travelease.service.RoomService;
 import com.youcode.travelease.service.UserService;
 import com.youcode.travelease.util.ReservationForm;
 import com.youcode.travelease.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +33,8 @@ public class HotelServiceImpl implements HotelService {
     private RoomService roomService; // TODO use service
     @Autowired
     private UserService userService;
+    @Autowired
+    private ReservationService reservationService;
 
 
 
@@ -164,32 +170,29 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public Reservation reservation ( ReservationForm reservationForm ) {
-        /*
-         * TODO check user and room
-         * */
-        Reservation reservation = new Reservation ();
-        reservation.setDateDebut ( reservationForm.getDateDebut () );
-        reservation.setDateFin ( reservationForm.getDateFin () );
+        String currentUserName = "";
 
-        Optional<Room> optionalRoom = roomService.findById ( reservationForm.getIdRoom ());
-        Optional<User> optionalUser = userService.findByUsername( "tayebsouini" ); // TODO user by Token
-
-        if ( optionalRoom.isPresent () && optionalUser.isPresent ()) {
-            reservation.setRoom ( optionalRoom.get () );
-            reservation.setUser ( optionalUser.get () );
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken )) {
+            currentUserName= authentication.getName();
         }
 
-        /**
-        Optional<User> userOptional = userRepository.findById ( reservationForm.getIdUser () );
-        User user = userOptional.get ();
+        User user = userService.findByEmail ( currentUserName );
 
-        if (room != null && !room.equals ( new Room () ) && user != null && !user.equals ( new User () )) {
-            reservation.setRoom ( room );
+        if (user != null && !user.equals ( new User (  ) )) {
+            Reservation reservation = new Reservation ();
+            reservation.setDateDebut ( reservationForm.getDateDebut () );
+            reservation.setDateFin ( reservationForm.getDateFin () );
             reservation.setUser ( user );
+
+            Optional<Room> optionalRoom = roomService.findById ( reservationForm.getIdRoom ());
+            if ( optionalRoom.isPresent ()) {
+                reservation.setRoom ( optionalRoom.get () );
+                reservationRepository.save ( reservation );
+                return reservation;
+            }
         }
-         */
-        reservationRepository.save ( reservation );
-        return reservation;
+        return null;
     }
 
     @Override

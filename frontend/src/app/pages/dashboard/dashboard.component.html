@@ -65,7 +65,7 @@
                                 <th scope="col">Hotel</th>
                                 <th scope="col">City</th>
                                 <th scope="col">Country</th>
-                                <th scope="col" class="text-center">Approve</th>
+                                <th scope="col" class="text-center">Action</th>
                              </tr>
                           </thead>
                           <tbody>
@@ -74,7 +74,7 @@
                                 <td> {{ noApprovedHotel.addresseHotel.city }} </td>
                                 <td> {{ noApprovedHotel.addresseHotel.country }} </td>
                                 <td class="text-center">
-                                   <button (click)="approveHotel(noApprovedHotel.id)" type="button" class="btn btn-secondary">Approve</button>
+                                   <a (click)="approveHotel(noApprovedHotel.id)" type="button" class=""><i class="bi bi-check-circle fs-2 text-success"></i></a>
                                   </td>
                              </tr>
                           </tbody>

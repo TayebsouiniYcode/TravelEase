@@ -6,10 +6,12 @@ import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.entity.User;
 import com.youcode.travelease.service.HotelService;
+import com.youcode.travelease.service.ReservationService;
 import com.youcode.travelease.service.RoomService;
 import com.youcode.travelease.util.ReservationForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +26,7 @@ public class HotelController {
 
     private  HotelService hotelService;
     private  RoomService roomService;
+    private ReservationService reservationService;
 
     public HotelController ( HotelService hotelService , RoomService roomService ) {
         this.hotelService = hotelService;

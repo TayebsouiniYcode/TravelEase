@@ -11,13 +11,15 @@
               <div class="col-md-2">
                 <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid rounded-start" alt="...">
               </div>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <div class="card-body">
-                  <h5 class="card-title">
-                    {{ hotel.name }}
-                    <span class="badge bg-success text-white" *ngIf="hotel.approved == true">Approved</span>
-                    <span class="badge bg-warning text-dark" *ngIf="hotel.approved == false">Waiting for approve</span>
-                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title"> {{ hotel.name }} </h5>
+                    <div class="icons">
+                      <span class="badge text-white" *ngIf="hotel.approved == true"><i class="bi bi-check-circle-fill text-success fs-4"></i></span>
+                      <span class="badge text-white" *ngIf="hotel.approved == false"><i class="bi bi-alarm-fill text-warning fs-4"></i></span>
+                    </div>
+                  </div>
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <p class="card-text">
                     <small class="text-muted"> Adress :
@@ -27,9 +29,6 @@
                     </small>
                   </p>
                 </div>
-              </div>
-              <div class="col-md-2 d-flex align-items-center">
-                <button type="button" class="btn btn-outline-secondary" routerLink="/detailshotel/{{hotel.id}}">Details</button>
               </div>
             </div>
           </div>

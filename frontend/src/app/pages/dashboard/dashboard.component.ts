@@ -41,6 +41,8 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+
+
   approveHotel(id: number) {
     this.hotelService.approveHotelById(id).subscribe(
       (hotelApproved) => {
