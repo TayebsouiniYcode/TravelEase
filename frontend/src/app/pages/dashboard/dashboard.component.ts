@@ -13,11 +13,12 @@ export class DashboardComponent implements OnInit {
 
   noApprovedHotels: Hotel[] = [];
   statistiquesList!: any;
+  myReservation!: any;
 
   constructor(private elementRef: ElementRef,
     private hotelService: HotelService,
     private router: Router,
-    private tokenService: TokenService) {
+    private tokenService: TokenService,) {
     this.getStatistiques();
     this.getNoApprovedHotel();
   }

@@ -20,9 +20,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
+import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ProprietaireComponent } from './pages/proprietaire/proprietaire.component';
-import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
+
 
 @NgModule({
   declarations: [

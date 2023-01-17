@@ -1,5 +1,7 @@
 package com.youcode.travelease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,8 +18,9 @@ public class Reservation {
     @Column(name = "date_fin")
     private LocalDate dateFin;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)

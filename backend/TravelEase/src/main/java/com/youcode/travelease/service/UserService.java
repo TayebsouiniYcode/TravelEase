@@ -17,4 +17,6 @@ public interface UserService {
     String login ( LoginForm loginForm );
 
     Optional<User> findByUsername(String username);
+
+    User findByEmail(String email);
 }

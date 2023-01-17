@@ -12,7 +12,7 @@ export class InterceptorInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("this is interceptor");
     const token = localStorage.getItem("token");
     console.log(token);

@@ -27,7 +27,6 @@ export class TokenService {
   }
 
   getRoles() {
-    console.log("this is getRoles method inside token service");
     if (token) {
       let jsonToken_ = JSON.parse(atob(token.split('.')[1]));
       return jsonToken_.authorities;

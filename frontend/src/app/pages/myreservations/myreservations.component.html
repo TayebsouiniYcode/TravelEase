@@ -1,3 +1,40 @@
-<main id="main" class="main">
-  <h1>This is a reservations list</h1>
-</main>
+<main id="main" class="main admin-dashboard">
+  <div class="pagetitle">
+     <h1>My reservations</h1>
+     <nav>
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+           <li class="breadcrumb-item active">reservation</li>
+        </ol>
+     </nav>
+  </div>
+<div class="col-12">
+  <div class="card top-selling overflow-auto">
+     <div class="card-body pb-0">
+        <h5 class="card-title">Demande (Approve)</h5>
+        <table class="table table-borderless">
+           <thead>
+              <tr>
+                 <th scope="col" class="text-center">Du</th>
+                 <th scope="col" class="text-center">Au</th>
+                 <th scope="col" class="text-center">Room type</th>
+                 <th scope="col" class="text-center">Price</th>
+                 <th scope="col" class="text-center">Action</th>
+              </tr>
+           </thead>
+           <tbody>
+              <tr *ngFor="let reservation of myReservation">
+                 <td class="text-center"> {{ reservation.dateDebut }} </td>
+                 <td class="text-center"> {{ reservation.dateFin }} </td>
+                 <td class="text-center text-uppercase"> {{ reservation.room.type }} </td>
+                 <td class="text-center"> {{ reservation.room.price }} MAD</td>
+                 <td class="text-center">
+                    <button  type="button" class="btn btn-secondary">Delete</button>
+                  </td>
+              </tr>
+           </tbody>
+        </table>
+     </div>
+  </div>
+  </div>
+  </main>

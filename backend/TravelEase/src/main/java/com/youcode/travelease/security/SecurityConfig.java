@@ -44,7 +44,6 @@ public class SecurityConfig {
         http
                 .csrf ().disable ()
                 .cors ( ).disable ()
-
                 .authorizeRequests ()
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest ()
