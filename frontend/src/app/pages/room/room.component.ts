@@ -40,17 +40,12 @@ export class RoomComponent implements OnInit {
   }
 
   reserve() {
-    let token = localStorage.getItem("token");
-    if (token) {
-      this.reservation.idRoom = this.idRoom;
-      this.reservationService.reserve(this.reservation).subscribe(
-        (reservation_) => {
-          console.log(reservation_)
-        }
-      )
-    } else {
-      this.router.navigate(["/login"]);
-    }
+    this.reservation.idRoom = this.idRoom;
+    this.reservationService.reserve(this.reservation).subscribe(
+      (reservation_) => {
+        console.log(reservation_)
+      }
+    )
   }
 
   checkAuthentication() {

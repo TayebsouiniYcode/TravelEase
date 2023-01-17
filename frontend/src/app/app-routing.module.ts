@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoomComponent } from './pages/room/room.component';
+import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
 
 import { AuthGuard } from './guard/auth.guard';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "room/:id", component: RoomComponent, canActivate: [AuthGuard]},
   { path: "hotels" , component: HotelsComponent, canActivate: [AuthGuard]},
   { path: "detailsroom/:id", component: DetailsRoomComponent, canActivate: [AuthGuard]},
+  { path: "myreservations", component: MyreservationsComponent, canActivate: [AuthGuard]}
 ];
 
 

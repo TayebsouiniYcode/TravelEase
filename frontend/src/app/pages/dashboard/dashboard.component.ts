@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { HotelService } from 'src/app/service/hotel.service';
 import { Hotel } from 'src/app/model/hotel.model';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,10 @@ export class DashboardComponent implements OnInit {
   noApprovedHotels: Hotel[] = [];
   statistiquesList!: any;
 
-  constructor(private elementRef: ElementRef, private hotelService: HotelService, private router: Router) {
+  constructor(private elementRef: ElementRef,
+    private hotelService: HotelService,
+    private router: Router,
+    private tokenService: TokenService) {
     this.getStatistiques();
     this.getNoApprovedHotel();
   }
@@ -60,5 +64,15 @@ export class DashboardComponent implements OnInit {
         this.statistiquesList.numberOfRooms = 0;
       }
     )
+  }
+
+  hasRole(roleName: string) : boolean | any{
+    let roles = this.tokenService.getRoles();
+
+    for (const authority in roles) {
+      if (roles[authority].authority == roleName) {
+        return true;
+      }
+    }
   }
 }

@@ -22,6 +22,7 @@ import { RoomComponent } from './pages/room/room.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ProprietaireComponent } from './pages/proprietaire/proprietaire.component';
+import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProprietaireComponent } from './pages/proprietaire/proprietaire.compone
     LoginComponent,
     UtilisateursComponent,
     ProprietaireComponent,
+    MyreservationsComponent,
   ],
   imports: [
     BrowserModule,

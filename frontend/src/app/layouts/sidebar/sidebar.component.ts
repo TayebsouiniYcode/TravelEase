@@ -19,14 +19,8 @@ export class SidebarComponent implements OnInit {
       if (roles[authority].authority == roleName) {
         return true;
       }
-      // if (tempData.hasOwnProperty(key)) {
-      //   // your logic here
-      // }
+    }
   }
-    // roles.array.forEach( (role:  { authority: string; }) => {
-    //   if (role.authority == roleName) {
-    //     return true;
-    //   }
-    // });
-  }
+
+
 }

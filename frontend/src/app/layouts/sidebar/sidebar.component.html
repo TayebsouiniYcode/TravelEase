@@ -24,5 +24,11 @@
         <span>Utilisateurs</span>
       </a>
     </li>
+    <li class="nav-item" *ngIf="hasRole('ROLE_USER')">
+      <a class="nav-link " routerLink="/myreservations">
+        <i class="bi bi-grid"></i>
+        <span>My Reservations</span>
+      </a>
+    </li>
   </ul>
 </aside>
