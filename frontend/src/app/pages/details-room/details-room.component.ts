@@ -29,4 +29,12 @@ export class DetailsRoomComponent implements OnInit {
       }
     )
   }
+
+  saveChangesRoom() {
+    this.roomService.updateRoom(this.room).subscribe(
+      (room) => {
+        console.log(room);
+      }
+    )
+  }
 }

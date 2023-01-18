@@ -3,11 +3,14 @@ package com.youcode.travelease.service.implementation;
 
 import com.youcode.travelease.dto.LoginForm;
 import com.youcode.travelease.dto.UserDto;
+import com.youcode.travelease.entity.Role;
 import com.youcode.travelease.entity.User;
+import com.youcode.travelease.repository.RoleRepository;
 import com.youcode.travelease.repository.UserRepository;
 import com.youcode.travelease.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -23,6 +27,9 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     public UserDetails loadUserByUsername ( String email ) {
         User user = userRepository.findByEmail ( email );
@@ -48,6 +55,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword ( userDto.getPassword () );
         user.setPhone ( userDto.getPhone () );
         user.setUsername ( userDto.getUsername () );
+
+        Role role = getRoleByName ( "ROLE_USER" );
+        user.changeRole ( role );
         return userRepository.save ( user );
     }
 
@@ -64,5 +74,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail ( String email ) {
         return userRepository.findByEmail ( email );
+    }
+
+    @Override
+    public List < User > getAllUsers ( ) {
+        return this.userRepository.findAll ();
+    }
+
+    @Override
+    public Role getRoleByName ( String role_name ) {
+        return this.roleRepository.getRoleByName ( role_name );
+    }
+
+    @Override
+    public User save ( User user ) {
+        return this.userRepository.save ( user );
     }
 }

@@ -3,6 +3,7 @@ package com.youcode.travelease.service.implementation;
 import com.youcode.travelease.dto.FindRoomForm;
 import com.youcode.travelease.entity.Hotel;
 import com.youcode.travelease.entity.Room;
+import com.youcode.travelease.repository.HotelRepository;
 import com.youcode.travelease.repository.RoomRepository;
 import com.youcode.travelease.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import java.util.Optional;
 public class RoomServiceImpl implements RoomService {
     @Autowired
     RoomRepository roomRepository;
+    @Autowired
+    HotelRepository hotelRepository;
 
     @Override
     public Room getRoomById ( Long id ) {
@@ -67,5 +70,15 @@ public class RoomServiceImpl implements RoomService {
 //        } );
 
 //        return allRooms;
+    }
+
+    @Override
+    public Room updateRoom ( Room room ) {
+        return this.roomRepository.save ( room );
+    }
+
+    @Override
+    public Hotel getHotelByRoom ( Room room ) {
+        return this.hotelRepository.findHotelsByRooms ( room );
     }
 }

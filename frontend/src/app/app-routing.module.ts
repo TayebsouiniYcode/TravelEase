@@ -16,6 +16,7 @@ import { RoomComponent } from './pages/room/room.component';
 import { MyreservationsComponent } from './pages/myreservations/myreservations.component';
 
 import { AuthGuard } from './guard/auth.guard';
+import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: "room/:id", component: RoomComponent, canActivate: [AuthGuard]},
   { path: "hotels" , component: HotelsComponent, canActivate: [AuthGuard]},
   { path: "detailsroom/:id", component: DetailsRoomComponent, canActivate: [AuthGuard]},
-  { path: "myreservations", component: MyreservationsComponent, canActivate: [AuthGuard]}
+  { path: "myreservations", component: MyreservationsComponent, canActivate: [AuthGuard]},
+  { path: "utilisateurs", component: UtilisateursComponent, canActivate: [AuthGuard]}
 ];
 
 

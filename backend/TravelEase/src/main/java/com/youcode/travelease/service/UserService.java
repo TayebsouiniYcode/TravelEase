@@ -19,4 +19,10 @@ public interface UserService {
     Optional<User> findByUsername(String username);
 
     User findByEmail(String email);
+
+    List<User> getAllUsers();
+
+    Role getRoleByName(String role_name);
+
+    User save ( User user );
 }

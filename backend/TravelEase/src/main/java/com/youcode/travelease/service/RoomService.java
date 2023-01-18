@@ -16,4 +16,8 @@ public interface RoomService {
     List< Room> getAllRooms ( );
 
     List< Room> getDisponibleRoom ( FindRoomForm findRoomForm );
+
+    Room updateRoom ( Room room );
+
+    Hotel getHotelByRoom ( Room room );
 }

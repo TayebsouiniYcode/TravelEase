@@ -26,4 +26,10 @@ export class RoomService {
   getRoomById(idRoom: number): Observable<Room> {
     return this.http.get<Room>("http://localhost:8080/api/room/" + idRoom);
   }
+
+  updateRoom(room: any): Observable<any> {
+    console.log(room);
+
+    return this.http.put("http://localhost:8080/api/room/update", room);
+  }
 }
