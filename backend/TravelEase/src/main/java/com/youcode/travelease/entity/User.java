@@ -1,5 +1,7 @@
 package com.youcode.travelease.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.youcode.travelease.util.ResponseMessage;
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,7 +47,19 @@ public class User {
     private Set < Role > roles = new LinkedHashSet <> ( );
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private Set < Reservation > reservations = new LinkedHashSet <> ( );
+
+    @Transient
+    private ResponseMessage message;
+
+    public ResponseMessage getMessage ( ) {
+        return message;
+    }
+
+    public void setMessage ( ResponseMessage message ) {
+        this.message = message;
+    }
 
     public Set < Reservation > getReservations ( ) {
         return reservations;

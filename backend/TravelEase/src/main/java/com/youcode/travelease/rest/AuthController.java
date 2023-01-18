@@ -29,21 +29,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public String authenticate( @RequestBody LoginForm loginForm) {
-//        UserLogedInDto userLogedInDto = new UserLogedInDto (  );
         authenticationManager.authenticate (
                 new UsernamePasswordAuthenticationToken ( loginForm.getUsername (), loginForm.getPassword () )
         );
         final UserDetails userDetails = userDetailsService.loadUserByUsername ( loginForm.getUsername ( ) );
         return jwtUtils.generateToken ( userDetails );
-//        if (userDetails != null ) {
-//            userLogedInDto.setUsername ( userDetails.getUsername () );
-//            if (userDetails.getAuthorities () != null ) {
-//                userDetails.getAuthorities ().forEach ( role -> {
-//                    userLogedInDto.getRoles ().add ( role.getAuthority () );
-//                } );
-//            }
-//            return jwtUtils.generateToken ( userDetails );
-//        }
     }
 
     @PostMapping("/register")

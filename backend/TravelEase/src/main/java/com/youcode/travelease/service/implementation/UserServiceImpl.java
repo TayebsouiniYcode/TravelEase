@@ -8,6 +8,7 @@ import com.youcode.travelease.entity.User;
 import com.youcode.travelease.repository.RoleRepository;
 import com.youcode.travelease.repository.UserRepository;
 import com.youcode.travelease.service.UserService;
+import com.youcode.travelease.util.ResponseMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,16 +50,63 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register ( UserDto userDto ) {
         User user = new User (  );
-        user.setFirstname ( userDto.getFirstname () );
-        user.setLastname ( userDto.getLastname () );
-        user.setEmail ( userDto.getEmail () );
-        user.setPassword ( userDto.getPassword () );
-        user.setPhone ( userDto.getPhone () );
-        user.setUsername ( userDto.getUsername () );
+        if (userDto.getFirstname () != null && !userDto.getFirstname ().isEmpty ()) {
+            if (userDto.getLastname () != null && !userDto.getLastname ().isEmpty ()) {
+                if (userDto.getEmail () != null && !userDto.getEmail ().isEmpty ()) {
+                    // TODO Test for optional email if exists or not
+                    if ( userDto.getPassword () != null
+                            && !userDto.getPassword ().isEmpty ()) {
+                            try {
+                                user.setFirstname ( userDto.getFirstname () );
+                                user.setLastname ( userDto.getLastname () );
+                                user.setEmail ( userDto.getEmail () );
+                                user.setPassword ( userDto.getPassword () );
+                                user.setPhone ( userDto.getPhone () );
+                                user.setUsername ( userDto.getUsername () );
 
-        Role role = getRoleByName ( "ROLE_USER" );
-        user.changeRole ( role );
-        return userRepository.save ( user );
+                                Role role = getRoleByName ( "ROLE_USER" );
+                                user.changeRole ( role );
+                                return userRepository.save ( user );
+                            } catch (Exception e) {
+                                ResponseMessage message = new ResponseMessage ();
+                                message.setMessage ( "Exception : " + e.getMessage () );
+                                user.setMessage ( message );
+                                return user;
+                            }
+                    } else {
+
+                        ResponseMessage message = new ResponseMessage ();
+                        message.setMessage ( "Password null or empty" );
+                        user.setMessage ( message );
+                        return user;
+
+                    }
+                } else {
+
+                    ResponseMessage message = new ResponseMessage ();
+                    message.setMessage ( "Email null or empty" );
+                    user.setMessage ( message );
+                    return user;
+                }
+            } else {
+                // lastname is null or empty
+
+                ResponseMessage message = new ResponseMessage ();
+                message.setMessage ( "Lastname null or empty" );
+                user.setMessage ( message );
+                return user;
+            }
+        } else {
+
+            ResponseMessage message = new ResponseMessage ();
+            message.setMessage ( "firstname" );
+            user.setMessage ( message );
+            return user;
+        }
+
+
+
+
     }
 
     @Override

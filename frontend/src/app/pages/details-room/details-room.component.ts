@@ -11,11 +11,13 @@ import { RoomService } from 'src/app/service/room.service';
 export class DetailsRoomComponent implements OnInit {
 
   room: Room = new Room;
+  reservationList: any;
 
   constructor(private route: ActivatedRoute, private roomService: RoomService) {
     let idRoom = Number(this.route.snapshot.params['id']);
     console.log(idRoom);
     this.getRoomById(idRoom);
+    this.getReservationsByRoomId(idRoom);
 
    }
 
@@ -34,6 +36,15 @@ export class DetailsRoomComponent implements OnInit {
     this.roomService.updateRoom(this.room).subscribe(
       (room) => {
         console.log(room);
+      }
+    )
+  }
+
+  getReservationsByRoomId(idRoom: number) {
+    this.roomService.getReservationsByRoom(idRoom).subscribe(
+      (data) => {
+        this.reservationList = data;
+
       }
     )
   }

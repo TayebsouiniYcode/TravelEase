@@ -36,7 +36,6 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAutFilter;
-
     private final UserService userService;
 
     @Bean
@@ -55,14 +54,6 @@ public class SecurityConfig {
                 .authenticationProvider ( authenticationProvider() )
                 .addFilterBefore ( jwtAutFilter, UsernamePasswordAuthenticationFilter.class );
         return http.build ();
-    }
-
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        final DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider ();
-        authenticationProvider.setUserDetailsService ( userDetailsService () );
-        authenticationProvider.setPasswordEncoder ( passwordEncoder() );
-        return authenticationProvider;
     }
 
     @Bean
@@ -95,5 +86,13 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource (  );
         source.registerCorsConfiguration ( "/**", configuration );
         return source;
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        final DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider ();
+        authenticationProvider.setUserDetailsService ( userDetailsService () );
+        authenticationProvider.setPasswordEncoder ( passwordEncoder() );
+        return authenticationProvider;
     }
 }

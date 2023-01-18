@@ -2,6 +2,7 @@ package com.youcode.travelease.rest;
 
 import com.youcode.travelease.dto.FindRoomForm;
 import com.youcode.travelease.entity.Hotel;
+import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.service.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,10 @@ public class RoomController {
         Hotel hotel = this.roomService.getHotelByRoom(room);
         room.setHotel ( hotel );
         return this.roomService.updateRoom(room);
+    }
+
+    @GetMapping("/getreservations/{idRoom}")
+    public List< Reservation > getReservationByRoom(@PathVariable Long idRoom) {
+        return this.roomService.getReservationByRoomId(idRoom);
     }
 }

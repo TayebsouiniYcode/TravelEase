@@ -2,6 +2,7 @@ package com.youcode.travelease.service;
 
 import com.youcode.travelease.dto.FindRoomForm;
 import com.youcode.travelease.entity.Hotel;
+import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
 
 import java.util.List;
@@ -20,4 +21,10 @@ public interface RoomService {
     Room updateRoom ( Room room );
 
     Hotel getHotelByRoom ( Room room );
+
+    Integer getNumberOfRooms ( );
+
+    List< Reservation> getReservationByRoom ( Room room );
+
+    List< Reservation> getReservationByRoomId ( Long idRoom );
 }

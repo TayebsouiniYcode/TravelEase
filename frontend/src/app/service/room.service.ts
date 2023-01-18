@@ -28,8 +28,10 @@ export class RoomService {
   }
 
   updateRoom(room: any): Observable<any> {
-    console.log(room);
-
     return this.http.put("http://localhost:8080/api/room/update", room);
+  }
+
+  getReservationsByRoom(idRoom: number): Observable<any> {
+    return this.http.get("http://localhost:8080/api/room/getreservations/" + idRoom);
   }
 }

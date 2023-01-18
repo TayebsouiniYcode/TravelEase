@@ -105,23 +105,21 @@
     <thead>
       <tr class="text-center">
         <th scope="col">Client</th>
+        <th scope="col">Phone</th>
         <th scope="col">Du</th>
         <th scope="col">Au</th>
-        <th scope="col">Prix</th>
-        <th scope="col">Jours</th>
-        <th scope="col">Action</th>
+        <th scope="col">Price per night</th>
+        <th scope="col"> Room type</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="text-center">
-        <td>Tayeb</td>
-        <td>20/01/2023</td>
-        <td>23/01/2023</td>
-        <td> 300 Dh</td>
-        <td> 3 </td>
-        <td>
-          <button type="button" class="btn btn-danger">Annuler</button>
-        </td>
+      <tr class="text-center" *ngFor="let reservation of reservationList">
+        <td> {{reservation.user.firstname}} {{reservation.user.firstname}} </td>
+        <td>  {{reservation.user.phone}}</td>
+        <td> {{reservation.dateDebut}}</td>
+        <td> {{reservation.dateFin}} </td>
+        <td> {{reservation.room.price}} MAD</td>
+        <td> {{reservation.room.type}}</td>
       </tr>
     </tbody>
   </table>

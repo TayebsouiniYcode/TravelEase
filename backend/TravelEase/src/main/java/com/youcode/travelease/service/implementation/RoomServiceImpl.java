@@ -2,9 +2,11 @@ package com.youcode.travelease.service.implementation;
 
 import com.youcode.travelease.dto.FindRoomForm;
 import com.youcode.travelease.entity.Hotel;
+import com.youcode.travelease.entity.Reservation;
 import com.youcode.travelease.entity.Room;
 import com.youcode.travelease.repository.HotelRepository;
 import com.youcode.travelease.repository.RoomRepository;
+import com.youcode.travelease.service.ReservationService;
 import com.youcode.travelease.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,6 +23,8 @@ public class RoomServiceImpl implements RoomService {
     RoomRepository roomRepository;
     @Autowired
     HotelRepository hotelRepository;
+    @Autowired
+    ReservationService reservationService;
 
     @Override
     public Room getRoomById ( Long id ) {
@@ -80,5 +84,24 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public Hotel getHotelByRoom ( Room room ) {
         return this.hotelRepository.findHotelsByRooms ( room );
+    }
+
+    @Override
+    public Integer getNumberOfRooms ( ) {
+        return Integer.parseInt ( String.valueOf ( this.roomRepository.count ()));
+    }
+
+    @Override
+    public List < Reservation > getReservationByRoom ( Room room ) {
+        return this.reservationService.getReservationsByRoom(room);
+    }
+
+    @Override
+    public List < Reservation > getReservationByRoomId ( Long idRoom ) {
+        Optional<Room> roomOptional = this.roomRepository.findById ( idRoom );
+        if (roomOptional.isPresent ()) {
+            return this.reservationService.getReservationsByRoom ( roomOptional.get () );
+        }
+        return null;
     }
 }

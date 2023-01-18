@@ -20,7 +20,7 @@ public class Reservation {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
