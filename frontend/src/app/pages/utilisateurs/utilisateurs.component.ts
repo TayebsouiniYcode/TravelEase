@@ -46,6 +46,14 @@ export class UtilisateursComponent implements OnInit {
     this.utilisateurService.updateUtilisateur(this.userUpdateDto).subscribe(
       (data) => {
         console.log(data);
+        if (data) {
+          this.utilisateurService.getAllUsers().subscribe(
+            (data) => {
+              this.users = data;
+              //TODO create model
+            }
+          )
+        }
       }
     );
   }

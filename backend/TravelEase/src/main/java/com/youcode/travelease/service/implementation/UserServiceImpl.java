@@ -103,10 +103,6 @@ public class UserServiceImpl implements UserService {
             user.setMessage ( message );
             return user;
         }
-
-
-
-
     }
 
     @Override
