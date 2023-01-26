@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin("http://localhost:4051")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class DashboardController {
 

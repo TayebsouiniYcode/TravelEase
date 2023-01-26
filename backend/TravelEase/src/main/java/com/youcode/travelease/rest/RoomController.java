@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/room")
-@CrossOrigin("http://localhost:4051")
+@CrossOrigin("http://localhost:4200")
 @RequiredArgsConstructor
 public class RoomController {
     @Autowired

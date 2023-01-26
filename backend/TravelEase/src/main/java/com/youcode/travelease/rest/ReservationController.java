@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservation")
-@CrossOrigin(origins = "http://localhost:4051")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReservationController {
     @Autowired
     private UserService userService;
