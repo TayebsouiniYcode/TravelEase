@@ -77,7 +77,7 @@
   <hr class="mt-5">
   <div class="rooms">
     <div class="pagetitle d-flex justify-content-end">
-      <a href="#" routerLink="/addroom/{{hotel.id}}" class="btn btn-primary">Ajouter Chambre</a>
+      <a routerLink="/addroom/{{hotel.id}}" class="btn btn-primary">Ajouter Chambre</a>
     </div>
     <h5 class="card-title">Hotels List</h5>
     <div class="card-body pb-0" *ngFor="let room of hotel.rooms">

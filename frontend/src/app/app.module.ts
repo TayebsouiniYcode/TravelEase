@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common'; // routing after build
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -56,7 +57,8 @@ import { ProprietaireComponent } from './pages/proprietaire/proprietaire.compone
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorInterceptor,
       multi: true
-    }
+    },
+    { provide: LocationStrategy, useClass: PathLocationStrategy } // after build solve problem of routing
   ],
   bootstrap: [AppComponent]
 })

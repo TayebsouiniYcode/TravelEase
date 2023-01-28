@@ -17,7 +17,7 @@
           <a class="nav-link" href="#">Hotels</a>
         </li>
       </ul>
-        <a *ngIf="isAuthenticate == false" class="btn btn-outline-secondary" href="/login">Login</a>
+        <a *ngIf="isAuthenticate == false" class="btn btn-outline-secondary" routerLink="/login">Login</a>
         <a *ngIf="isAuthenticate == true" class="btn btn-outline-secondary" (click)="logout()">logout</a>
     </div>
   </div>

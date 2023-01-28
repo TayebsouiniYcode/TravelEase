@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 public class AdminController {
     @Autowired
     private UserService userService;
