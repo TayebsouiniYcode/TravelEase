@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TravelEaseApplication<TravelEase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.youcode.travelease.TravelEaseApplication",
+            "projectName": "TravelEase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

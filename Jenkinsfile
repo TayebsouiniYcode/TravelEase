@@ -6,6 +6,5 @@ pipeline {
         git(url: 'https://github.com/TayebsouiniYcode/TravelEase', branch: 'main')
       }
     }
-
   }
 }
