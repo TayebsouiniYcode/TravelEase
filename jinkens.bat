@@ -1,19 +1,28 @@
 @echo off
 
-set repo=TravelEase
-set user=TayebsouiniYcode
+echo Checking for new commits in the remote repository...
 
-REM Get latest commit from repo
-for /f "tokens=*" %%i in ('curl -s https://api.github.com/repos/%user%/%repo%/commits/HEAD') do set latest=%%i
+git fetch origin
 
-REM Get latest commit from local repo
-for /f "tokens=*" %%i in ('git rev-parse HEAD') do set local=%%i
+echo Comparing local branch with remote branch...
 
-REM Compare the two and check if there is a new push
-if "%local%"=="%latest%" (
-  echo No new push
-) else (
-  echo New push detected!
-)
+git diff HEAD origin/main
+@REM timeout /t 400
+pause
 
-timeout /t 400
+@REM set repo=TravelEase
+@REM set user=TayebsouiniYcode
+
+@REM REM Get latest commit from repo
+@REM for /f "tokens=*" %%i in ('curl -s https://api.github.com/repos/%user%/%repo%/commits/HEAD') do set latest=%%i
+
+@REM REM Get latest commit from local repo
+@REM for /f "tokens=*" %%i in ('git rev-parse HEAD') do set local=%%i
+
+@REM REM Compare the two and check if there is a new push
+@REM if "%local%"=="%latest%" (
+@REM   echo No new push
+@REM ) else (
+@REM   echo New push detected!
+@REM )
+
