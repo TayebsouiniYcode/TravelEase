@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin()
 @RequestMapping("/api/paiement")
 public class PaiementController {
+
     @Autowired
     PaiememtnService paiememtnService;
     
