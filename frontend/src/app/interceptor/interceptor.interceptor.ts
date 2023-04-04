@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() {
+    //test
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("this is interceptor");
